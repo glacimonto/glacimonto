@@ -1,4 +1,6 @@
-# Glacimonto
+__Looking for contributors__ ;)
+
+# Why Glacimonto ?
 
 Glacimonto is an opinionated test framework.
 
@@ -14,7 +16,7 @@ And thus,
 
 Glacimonto was born.
 
-# Use case
+# What is it for ?
 
 At the moment, Glacimonto aims to test deployed software in order to validate functional requirements before launch in production.
 
@@ -29,3 +31,8 @@ __Glacimonto is no silver-bullet, it is just a tool which promotes and supports 
 As such, to benefit from it, we highly advise you to be proficient or to document yourself about Behaviour-Driven-Development (by Dan North), Specification by Example (by Gojko Adzic) and Living Documentation (by Cyrille Martraire).
 
 Global understanding of Test Driven Development and knowledge about Ubiquitous Language (from Domain Driven Design, by Eric Evans) is also valuable.
+
+# Current State
+
+We are currently working on a POC project and we are slowly building specifications based on our learnings.
+This specification can be found in the wiki : https://github.com/glacimonto/glacimonto/wiki
