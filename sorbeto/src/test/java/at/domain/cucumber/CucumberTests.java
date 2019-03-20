@@ -1,4 +1,4 @@
-package at.cucumber.domain;
+package at.domain.cucumber;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
@@ -8,9 +8,10 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
   strict   = true,
   plugin   = { "pretty", "json:target/cucumber-report.json" },
-  features = { "classpath:at/cucumber/domain" },
-  glue     = { "at.cucumber.domain.stepdefs" },
-  tags     = { "not @Ignore" })
-public class ATCucumberTest {
+  features = { "classpath:at/domain/cucumber" },
+  glue     = { "at.domain.cucumber.stepdefs" },
+  tags     = { "@Sorbeto", "not @Ignore" })
+
+public class CucumberTests {
 
 }
