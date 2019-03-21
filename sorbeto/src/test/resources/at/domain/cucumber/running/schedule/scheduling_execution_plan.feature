@@ -4,6 +4,7 @@ Feature: For scheduling an execution plan
 
    Scenario: Successfully schedule an execution plan into a pending execution
     Given the following execution plan
-    And there is not any pending execution
+    And there is no scheduled execution
     When it is scheduled
-    Then an execution is pending
+    Then it schedules an execution
+    And its status is pending

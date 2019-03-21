@@ -12,8 +12,8 @@ public class SchedulingExecutionStepDefs {
 //    throw new cucumber.api.PendingException();
   }
 
-  @And("there is not any pending execution")
-  public void there_is_not_any_pending_execution() {
+  @And("there is no scheduled execution")
+  public void there_is_no_scheduled_execution() {
 //    throw new cucumber.api.PendingException();
   }
 
@@ -22,8 +22,13 @@ public class SchedulingExecutionStepDefs {
 //    throw new cucumber.api.PendingException();
   }
 
-  @Then("an execution is pending")
-  public void an_execution_is_pending() {
+  @Then("it schedules an execution")
+  public void it_schedules_an_execution() {
+//    throw new cucumber.api.PendingException();
+  }
+
+  @And("its status is pending")
+  public void its_status_is_pending() {
 //    throw new cucumber.api.PendingException();
   }
 
