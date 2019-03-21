@@ -9,11 +9,13 @@ import com.github.fridujo.glacio.running.api.When;
 import com.github.glacimonto.sorbeto.domain.ExecutionRequestId;
 import com.github.glacimonto.sorbeto.domain.Sorbeto;
 import com.github.glacimonto.sorbeto.domain.SorbetoImpl;
+import com.github.glacimonto.sorbeto.domain.running.DefaultRunnerImpl;
 import com.github.glacimonto.sorbeto.domain.reporting.TestCaseExecutionReport;
 
 public class TestCaseExecutionStepDef {
 
-  private Sorbeto sorbeto = new SorbetoImpl();
+  private Sorbeto sorbeto = new SorbetoImpl(new DefaultRunnerImpl());
+
   private ExecutionRequestId executionRequestId;
 
   @Given("the following glacio test case")
@@ -23,7 +25,7 @@ public class TestCaseExecutionStepDef {
 
   @When("it is executed")
   public void it_is_executed() {
-    executionRequestId = sorbeto.execute(TestContext.TEST_CASE);
+    executionRequestId = sorbeto.run(TestContext.TEST_CASE);
   }
 
   @Then("the execution succeed")
