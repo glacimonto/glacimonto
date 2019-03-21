@@ -3,12 +3,15 @@ package at.domain.glacio.stepdefs;
 import at.domain.testutils.TestContext;
 import com.github.fridujo.glacio.running.api.Then;
 import com.github.fridujo.glacio.running.api.When;
+import com.github.glacimonto.sorbeto.domain.running.parse.Example;
+import com.github.glacimonto.sorbeto.domain.running.parse.IParse;
+import com.github.glacimonto.sorbeto.domain.running.parse.ParserImpl;
 import org.assertj.core.api.Assertions;
 
-public class TestCaseParsingStepDef {
+public class ParsingTestCaseStepDef {
 
   private Example example;
-  private Parser parser = new ParserImpl();
+  private IParse parser = new ParserImpl();
 
   @When("it is parsed")
   public void it_is_parsed() {
@@ -21,17 +24,4 @@ public class TestCaseParsingStepDef {
     Assertions.assertThat(example).isEqualTo(expectedExample);
   }
 
-  private class Example {
-  }
-
-  private interface Parser {
-    Example parse(String testCase);
-  }
-
-  private class ParserImpl implements Parser {
-    @Override
-    public Example parse(String testCase) {
-      return null;
-    }
-  }
 }

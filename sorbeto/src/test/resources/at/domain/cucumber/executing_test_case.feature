@@ -1,6 +1,5 @@
 # language: en
 
-@Sorbeto
 Feature: For executing a test case
 
   A Test Case illustrates a specific case that could possibly occur during application runtime,

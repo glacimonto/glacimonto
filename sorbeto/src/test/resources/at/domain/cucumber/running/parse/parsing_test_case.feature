@@ -1,6 +1,5 @@
 # language: en
 
-@Parser
 Feature: For parsing a test case
 
   A Test Case illustrates a specific case that could possibly occur during application runtime,
@@ -21,4 +20,4 @@ Feature: For parsing a test case
           Do success
     """
     When it is parsed
-    Then an example is created
+    Then it produces an example
