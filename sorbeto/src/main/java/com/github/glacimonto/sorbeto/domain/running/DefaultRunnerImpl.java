@@ -4,9 +4,16 @@ import com.github.glacimonto.sorbeto.domain.ExecutionRequestId;
 
 public class DefaultRunnerImpl implements IRun {
 
+  private Parser parser;
+
   @Override
   public ExecutionRequestId run(String testCase) {
-    return null;
+    Example example = parser.parse(testCase);
+    return generateExecutionId();
+  }
+
+  private ExecutionRequestId generateExecutionId() {
+    return new ExecutionRequestId(0L);
   }
 
 }

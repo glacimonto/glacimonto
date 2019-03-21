@@ -15,8 +15,8 @@ public class TestCaseParsingStepDef {
     example = parser.parse(TestContext.TEST_CASE);
   }
 
-  @Then("an example is created")
-  public void an_example_is_created() {
+  @Then("it produces an example")
+  public void it_produces_an_example() {
     Example expectedExample = new Example();
     Assertions.assertThat(example).isEqualTo(expectedExample);
   }
