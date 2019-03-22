@@ -6,7 +6,7 @@ import com.github.glacimonto.sorbeto.domain.running.compose.ExecutionPlan;
 import com.github.glacimonto.sorbeto.domain.running.schedule.DefaultSchedulerImpl;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ExecutionStatus;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ScheduledExecution;
-import com.github.glacimonto.sorbeto.domain.running.schedule.Scheduler;
+import com.github.glacimonto.sorbeto.domain.running.schedule.ISchedule;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -16,7 +16,7 @@ import java.util.List;
 public class SchedulingExecutionStepDefs {
 
   private ExecutionPlan givenExecutionPlan;
-  private Scheduler scheduler = new DefaultSchedulerImpl();
+  private ISchedule scheduler = new DefaultSchedulerImpl();
   private List<ScheduledExecution> scheduledExecutions;
 
   @Given("the following execution plan")

@@ -5,4 +5,8 @@ public class ScheduledExecution {
   public ExecutionStatus status() {
     return null;
   }
+
+  public ExecutionId executionId() {
+    return new ExecutionId();
+  }
 }

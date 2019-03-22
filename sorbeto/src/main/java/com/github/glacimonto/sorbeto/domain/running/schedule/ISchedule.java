@@ -3,7 +3,7 @@ package com.github.glacimonto.sorbeto.domain.running.schedule;
 import com.github.glacimonto.sorbeto.domain.running.compose.ExecutionPlan;
 import java.util.List;
 
-public interface Scheduler {
+public interface ISchedule {
 
   List<ScheduledExecution> scheduled();
 

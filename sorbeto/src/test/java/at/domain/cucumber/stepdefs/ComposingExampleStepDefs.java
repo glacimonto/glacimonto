@@ -2,7 +2,7 @@ package at.domain.cucumber.stepdefs;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.github.glacimonto.sorbeto.domain.running.compose.Composer;
+import com.github.glacimonto.sorbeto.domain.running.compose.ICompose;
 import com.github.glacimonto.sorbeto.domain.running.compose.DefaultComposerImpl;
 import com.github.glacimonto.sorbeto.domain.running.compose.ExecutionPlan;
 import com.github.glacimonto.sorbeto.domain.running.parse.Example;
@@ -13,7 +13,7 @@ import cucumber.api.java.en.When;
 public class ComposingExampleStepDefs {
 
   private Example givenExample;
-  private Composer composer = new DefaultComposerImpl();
+  private ICompose composer = new DefaultComposerImpl();
   private ExecutionPlan actualExecutionPlan;
 
   @Given("the following example")
@@ -31,6 +31,5 @@ public class ComposingExampleStepDefs {
     ExecutionPlan expectedExecutionPlan = new ExecutionPlan();
     assertThat(actualExecutionPlan).isEqualTo(expectedExecutionPlan);
   }
-
 
 }
