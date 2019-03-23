@@ -2,9 +2,9 @@ package at.domain.cucumber.stepdefs;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.github.glacimonto.sorbeto.domain.running.compose.ICompose;
 import com.github.glacimonto.sorbeto.domain.running.compose.DefaultComposerImpl;
 import com.github.glacimonto.sorbeto.domain.running.compose.ExecutionPlan;
+import com.github.glacimonto.sorbeto.domain.running.compose.ICompose;
 import com.github.glacimonto.sorbeto.domain.running.parse.Example;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;

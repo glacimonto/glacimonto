@@ -5,7 +5,8 @@ import com.github.glacimonto.sorbeto.domain.running.schedule.ScheduledExecution;
 
 public interface IPlay {
 
-    void play(ScheduledExecution givenPendingExecution);
+  void play(ScheduledExecution givenPendingExecution);
 
-  void subscribe(IWatch playerObserver);
+  void subscribe(IWatch watcher);
+
 }
