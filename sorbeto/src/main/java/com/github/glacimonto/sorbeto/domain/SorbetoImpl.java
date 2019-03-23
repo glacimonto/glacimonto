@@ -1,14 +1,17 @@
 package com.github.glacimonto.sorbeto.domain;
 
-import com.github.glacimonto.sorbeto.domain.running.IRun;
+import com.github.glacimonto.sorbeto.domain.reporting.IReport;
 import com.github.glacimonto.sorbeto.domain.reporting.TestCaseExecutionReport;
+import com.github.glacimonto.sorbeto.domain.running.IRun;
 
 public class SorbetoImpl implements Sorbeto {
 
-  private IRun engine;
+  private final IRun engine;
+  private final IReport reporter;
 
-  public SorbetoImpl(IRun engine) {
+  public SorbetoImpl(IRun engine, IReport reporter) {
     this.engine = engine;
+    this.reporter = reporter;
   }
 
   @Override
@@ -18,7 +21,7 @@ public class SorbetoImpl implements Sorbeto {
 
   @Override
   public TestCaseExecutionReport follow(ExecutionRequestId executionRequestId) {
-    return null;
+    return reporter.follow(executionRequestId);
   }
 
 }

@@ -1,5 +1,6 @@
 # language: en
 
+@StepPlayer
 Feature: For playing a step
 
   Scenario: Successfully play a step

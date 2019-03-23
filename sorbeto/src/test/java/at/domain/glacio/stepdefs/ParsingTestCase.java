@@ -8,7 +8,7 @@ import com.github.glacimonto.sorbeto.domain.running.parse.IParse;
 import com.github.glacimonto.sorbeto.domain.running.parse.ParserImpl;
 import org.assertj.core.api.Assertions;
 
-public class ParsingTestCaseStepDef {
+public class ParsingTestCase {
 
   private Example example;
   private IParse parser = new ParserImpl();

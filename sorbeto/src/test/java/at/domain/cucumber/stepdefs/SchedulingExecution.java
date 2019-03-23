@@ -13,7 +13,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import java.util.List;
 
-public class SchedulingExecutionStepDefs {
+public class SchedulingExecution {
 
   private ExecutionPlan givenExecutionPlan;
   private ISchedule scheduler = new DefaultSchedulerImpl();

@@ -8,7 +8,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.assertj.core.api.Assertions;
 
-public class ParsingTestCaseStepDef {
+public class ParsingTestCase {
 
   private Example example;
   private IParse parser = new ParserImpl();

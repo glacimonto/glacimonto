@@ -1,5 +1,6 @@
 # language: en
 
+@Player
 Feature: For playing an execution
 
   Scenario: Successfully play an execution

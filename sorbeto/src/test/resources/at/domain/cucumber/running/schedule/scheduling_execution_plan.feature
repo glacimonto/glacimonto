@@ -1,5 +1,6 @@
 # language: en
 
+@Scheduler
 Feature: For scheduling an execution plan
 
    Scenario: Successfully schedule an execution plan into a pending execution

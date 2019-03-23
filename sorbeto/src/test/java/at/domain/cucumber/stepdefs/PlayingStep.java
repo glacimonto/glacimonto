@@ -5,7 +5,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class PlayingStepStepDefs {
+public class PlayingStep {
 
   @Given("a step")
   public void a_step() {

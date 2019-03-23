@@ -1,5 +1,6 @@
 # language: en
 
+@Composer
 Feature: For composing an example
 
   Scenario: Successfully compose an example into an execution plan
