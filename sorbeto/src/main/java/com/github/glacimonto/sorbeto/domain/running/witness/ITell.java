@@ -1,18 +1,14 @@
-package com.github.glacimonto.sorbeto.domain.running.watch;
+package com.github.glacimonto.sorbeto.domain.running.witness;
 
-import com.github.glacimonto.sorbeto.domain.reporting.IReport;
-import com.github.glacimonto.sorbeto.domain.running.play.IPlay;
-import com.github.glacimonto.sorbeto.domain.running.watch.event.ExecutionEvent;
-import com.github.glacimonto.sorbeto.domain.running.watch.event.NullEvent;
-import com.github.glacimonto.sorbeto.domain.running.watch.event.StepExecutionEvent;
+import com.github.glacimonto.sorbeto.domain.running.witness.event.ExecutionEvent;
+import com.github.glacimonto.sorbeto.domain.running.witness.event.NullEvent;
+import com.github.glacimonto.sorbeto.domain.running.witness.event.StepExecutionEvent;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public interface IWatch {
+public interface ITell {
 
   int MAX_NUMBER_OF_EVENTS = 10000;
-
-  void watch(IPlay player);
 
   List<ExecutionEvent> events();
 
@@ -38,9 +34,5 @@ public interface IWatch {
       .filter(e -> !(e instanceof StepExecutionEvent))
       .collect(Collectors.toList());
   }
-
-  void send(ExecutionEvent executionEvent);
-
-  void subscribe(IReport reporter);
 
 }

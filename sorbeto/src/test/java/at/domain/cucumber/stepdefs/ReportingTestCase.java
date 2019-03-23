@@ -2,10 +2,9 @@ package at.domain.cucumber.stepdefs;
 
 import com.github.glacimonto.sorbeto.domain.reporting.DefaultReporterImpl;
 import com.github.glacimonto.sorbeto.domain.reporting.IReport;
-import com.github.glacimonto.sorbeto.domain.running.play.IPlay;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ScheduledExecution;
-import com.github.glacimonto.sorbeto.domain.running.watch.IWatch;
-import com.github.glacimonto.sorbeto.domain.running.watch.event.ExecutionEvent;
+import com.github.glacimonto.sorbeto.domain.running.witness.ITell;
+import com.github.glacimonto.sorbeto.domain.running.witness.event.ExecutionEvent;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -15,7 +14,7 @@ import java.util.List;
 public class ReportingTestCase {
 
   private ScheduledExecution givenRunningExecution;
-  private IWatch testWatcher = new TestWatcher();
+  private ITell testWatcher = new TestTeller();
 
   private final IReport reporterUnderTest = new DefaultReporterImpl();
 
@@ -39,12 +38,7 @@ public class ReportingTestCase {
   }
 
 
-  private class TestWatcher implements IWatch {
-
-    @Override
-    public void watch(IPlay player) {
-
-    }
+  private class TestTeller implements ITell {
 
     @Override
     public List<ExecutionEvent> events() {
@@ -52,4 +46,5 @@ public class ReportingTestCase {
     }
 
   }
+
 }
