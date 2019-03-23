@@ -1,8 +1,6 @@
 package at.domain.cucumber.stepdefs;
 
-import com.github.glacimonto.sorbeto.domain.ExecutionRequestId;
-import com.github.glacimonto.sorbeto.domain.reporting.IReport;
-import com.github.glacimonto.sorbeto.domain.reporting.TestCaseExecutionReport;
+import com.github.glacimonto.sorbeto.domain.reporting.IRecord;
 import com.github.glacimonto.sorbeto.domain.running.play.IPlay;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ScheduledExecution;
 import com.github.glacimonto.sorbeto.domain.running.witness.DefaultWitnessImpl;
@@ -15,13 +13,15 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import java.util.Collections;
+import org.assertj.core.api.Assertions;
 
 public class WitnessExecution {
 
   private ScheduledExecution givenRunningExecution;
-  private final FakeReporter fakeReporter = new FakeReporter();
 
-  private IWitness witnessUnderTest = new DefaultWitnessImpl(Collections.singletonList(fakeReporter));
+  // TODO - find a name for recording and reporting
+  private final IRecord fakeRecorder = new FakeRecorder();
+  private IWitness witnessUnderTest = new DefaultWitnessImpl(Collections.singletonList(fakeRecorder));
   private final IPlay fakePlayer = new FakePlayer(witnessUnderTest);
 
   @Given("a running execution")
@@ -36,6 +36,7 @@ public class WitnessExecution {
 
   @Then("the execution is over")
   public void the_execution_is_over() {
+    Assertions.assertThat(witnessUnderTest.last()).isEqualTo(new EndEvent());
   }
 
   private class FakePlayer implements IPlay {
@@ -55,13 +56,7 @@ public class WitnessExecution {
 
   }
 
-  private class FakeReporter implements IReport {
-
-    @Override
-    public TestCaseExecutionReport follow(ExecutionRequestId executionRequestId) {
-      return null;
-    }
-
+  private class FakeRecorder implements IRecord {
   }
 
   private class EndEvent implements ExecutionEvent {

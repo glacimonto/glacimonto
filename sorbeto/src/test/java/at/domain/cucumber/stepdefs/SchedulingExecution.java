@@ -47,5 +47,4 @@ public class SchedulingExecution {
     assertThat(actualStatus).isEqualTo(ExecutionStatus.PENDING);
   }
 
-
 }

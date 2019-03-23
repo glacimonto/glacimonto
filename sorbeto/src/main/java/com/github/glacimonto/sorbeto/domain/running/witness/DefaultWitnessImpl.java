@@ -1,15 +1,15 @@
 package com.github.glacimonto.sorbeto.domain.running.witness;
 
-import com.github.glacimonto.sorbeto.domain.reporting.IReport;
+import com.github.glacimonto.sorbeto.domain.reporting.IRecord;
 import com.github.glacimonto.sorbeto.domain.running.witness.event.ExecutionEvent;
 import java.util.List;
 
 public class DefaultWitnessImpl implements IWitness {
 
-  private final List<IReport> reporters;
+  private final List<IRecord> recorders;
 
-  public DefaultWitnessImpl(List<IReport> reporters) {
-    this.reporters = reporters;
+  public DefaultWitnessImpl(List<IRecord> recorders) {
+    this.recorders = recorders;
   }
 
   @Override
