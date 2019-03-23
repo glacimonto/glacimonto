@@ -16,9 +16,9 @@ public class ComposingExample {
   private ICompose composer = new DefaultComposerImpl();
   private ExecutionPlan actualExecutionPlan;
 
-  @Given("the following example")
-  public void the_following_example(Example example) {
-    givenExample = example;
+  @Given("an example")
+  public void an_example_example() {
+    givenExample = new Example();
   }
 
   @When("it is composed")

@@ -19,9 +19,9 @@ public class SchedulingExecution {
   private ISchedule scheduler = new DefaultSchedulerImpl();
   private List<ScheduledExecution> scheduledExecutions;
 
-  @Given("the following execution plan")
-  public void the_following_execution_plan(ExecutionPlan executionPlan) {
-    givenExecutionPlan = executionPlan;
+  @Given("an execution plan")
+  public void an_execution_plan() {
+    givenExecutionPlan = new ExecutionPlan();
   }
 
   @And("there is no scheduled execution")

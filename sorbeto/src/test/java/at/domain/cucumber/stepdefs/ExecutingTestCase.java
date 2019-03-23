@@ -6,9 +6,11 @@ import at.domain.testutils.TestContext;
 import com.github.glacimonto.sorbeto.domain.ExecutionRequestId;
 import com.github.glacimonto.sorbeto.domain.Sorbeto;
 import com.github.glacimonto.sorbeto.domain.SorbetoImpl;
+import com.github.glacimonto.sorbeto.domain.reporting.DefaultReporterImpl;
+import com.github.glacimonto.sorbeto.domain.reporting.IReport;
+import com.github.glacimonto.sorbeto.domain.reporting.TestCaseExecutionReport;
 import com.github.glacimonto.sorbeto.domain.running.DefaultRunnerImpl;
 import com.github.glacimonto.sorbeto.domain.running.IRun;
-import com.github.glacimonto.sorbeto.domain.reporting.TestCaseExecutionReport;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -22,6 +24,7 @@ public class ExecutingTestCase {
   @Before
   public void setup() {
     IRun engine = new DefaultRunnerImpl();
+    IReport reporter = new DefaultReporterImpl();
     sorbeto = new SorbetoImpl(engine, reporter);
   }
 
