@@ -1,6 +1,6 @@
 package at.domain.cucumber.stepdefs.reporting;
 
-import com.github.glacimonto.sorbeto.domain.reporting.DefaultJournalistImpl;
+import com.github.glacimonto.sorbeto.domain.reporting.DefaultReporterImpl;
 import com.github.glacimonto.sorbeto.domain.reporting.IRecord;
 import com.github.glacimonto.sorbeto.domain.reporting.IReport;
 import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
@@ -22,7 +22,7 @@ public class ReportingTestCase {
 
   private ITell testTeller = new TestTeller();
 
-  private final IReport reporterUnderTest = new DefaultJournalistImpl();
+  private final IReport reporterUnderTest = new DefaultReporterImpl();
 
   @Given("a running test case")
   public void a_running_test_case() {

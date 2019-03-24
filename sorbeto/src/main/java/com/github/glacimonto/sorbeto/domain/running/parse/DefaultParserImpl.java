@@ -2,7 +2,7 @@ package com.github.glacimonto.sorbeto.domain.running.parse;
 
 import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
 
-public class ParserImpl implements IParse {
+public class DefaultParserImpl implements IParse {
 
   @Override
   public Example parse(ExecutionRequestId executionRequestId, String testCase) {

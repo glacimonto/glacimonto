@@ -1,8 +1,6 @@
 package com.github.glacimonto.sorbeto.domain.running.witness;
 
 import com.github.glacimonto.sorbeto.domain.reporting.IRecord;
-import com.github.glacimonto.sorbeto.domain.reporting.IReport;
-import com.github.glacimonto.sorbeto.domain.reporting.Journalist;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ExecutionId;
 import com.github.glacimonto.sorbeto.domain.running.witness.event.ExecutionEvent;
 import com.github.glacimonto.sorbeto.domain.running.witness.event.NullEvent;

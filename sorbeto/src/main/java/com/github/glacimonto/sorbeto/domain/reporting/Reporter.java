@@ -1,5 +1,5 @@
 package com.github.glacimonto.sorbeto.domain.reporting;
 
-public interface Journalist extends IReport, IRecord {
+public interface Reporter extends IReport, IRecord {
 
 }

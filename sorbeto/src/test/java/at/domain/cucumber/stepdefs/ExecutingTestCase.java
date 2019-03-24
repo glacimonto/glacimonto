@@ -1,12 +1,12 @@
-package at.domain.cucumber.stepdefs.running;
+package at.domain.cucumber.stepdefs;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import at.domain.testutils.TestContext;
 import com.github.glacimonto.sorbeto.domain.Sorbeto;
 import com.github.glacimonto.sorbeto.domain.SorbetoImpl;
-import com.github.glacimonto.sorbeto.domain.reporting.DefaultJournalistImpl;
-import com.github.glacimonto.sorbeto.domain.reporting.Journalist;
+import com.github.glacimonto.sorbeto.domain.reporting.DefaultReporterImpl;
+import com.github.glacimonto.sorbeto.domain.reporting.Reporter;
 import com.github.glacimonto.sorbeto.domain.reporting.TestCaseExecutionReport;
 import com.github.glacimonto.sorbeto.domain.running.DefaultRunnerImpl;
 import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
@@ -14,7 +14,7 @@ import com.github.glacimonto.sorbeto.domain.running.IRun;
 import com.github.glacimonto.sorbeto.domain.running.compose.DefaultComposerImpl;
 import com.github.glacimonto.sorbeto.domain.running.compose.ICompose;
 import com.github.glacimonto.sorbeto.domain.running.parse.IParse;
-import com.github.glacimonto.sorbeto.domain.running.parse.ParserImpl;
+import com.github.glacimonto.sorbeto.domain.running.parse.DefaultParserImpl;
 import com.github.glacimonto.sorbeto.domain.running.schedule.DefaultSchedulerImpl;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ISchedule;
 import cucumber.api.java.Before;
@@ -29,9 +29,9 @@ public class ExecutingTestCase {
 
   @Before
   public void setup() {
-    IParse parser = new ParserImpl();
+    IParse parser = new DefaultParserImpl();
     ICompose composer = new DefaultComposerImpl();
-    Journalist reporter = new DefaultJournalistImpl();
+    Reporter reporter = new DefaultReporterImpl();
     ISchedule scheduler = new DefaultSchedulerImpl(reporter);
     IRun engine = new DefaultRunnerImpl(parser, composer, scheduler);
     sorbeto = new SorbetoImpl(engine, reporter);

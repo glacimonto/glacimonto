@@ -5,7 +5,7 @@ import com.github.glacimonto.sorbeto.domain.running.witness.ExecutionReport;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DefaultJournalistImpl implements Journalist {
+public class DefaultReporterImpl implements Reporter {
 
   private final Map<ExecutionRequestId, TestCaseExecutionReport> reports = new HashMap<>();
 

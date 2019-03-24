@@ -6,13 +6,13 @@ import com.github.fridujo.glacio.running.api.When;
 import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
 import com.github.glacimonto.sorbeto.domain.running.parse.Example;
 import com.github.glacimonto.sorbeto.domain.running.parse.IParse;
-import com.github.glacimonto.sorbeto.domain.running.parse.ParserImpl;
+import com.github.glacimonto.sorbeto.domain.running.parse.DefaultParserImpl;
 import org.assertj.core.api.Assertions;
 
 public class ParsingTestCase {
 
   private Example example;
-  private IParse parser = new ParserImpl();
+  private IParse parser = new DefaultParserImpl();
 
   @When("it is parsed")
   public void it_is_parsed() {
