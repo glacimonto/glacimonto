@@ -6,7 +6,7 @@ public class DefaultComposerImpl implements ICompose {
 
   @Override
   public ExecutionPlan compose(Example givenExample) {
-    return null;
+    return new ExecutionPlan();
   }
 
 }

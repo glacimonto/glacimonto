@@ -34,8 +34,8 @@ public class PlayingExecution {
 
   @Then("it produces a playing execution event")
   public void it_produces_a_playing_execution_event() {
-    ExecutionEvent expectedStartEvent = new PlayingEvent(){};
-    assertThat(fakeTeller.first()).isEqualTo(expectedStartEvent);
+    ExecutionEvent expectedPlayingEvent = new PlayingEvent(){};
+    assertThat(fakeTeller.first()).isEqualTo(expectedPlayingEvent);
   }
 
   @And("it produces X step execution event")

@@ -16,7 +16,7 @@ import java.util.List;
 public class SchedulingExecution {
 
   private ExecutionPlan givenExecutionPlan;
-  private ISchedule scheduler = new DefaultSchedulerImpl();
+  private ISchedule schedulerUnderTest = new DefaultSchedulerImpl();
   private List<ScheduledExecution> scheduledExecutions;
 
   @Given("an execution plan")
@@ -26,18 +26,18 @@ public class SchedulingExecution {
 
   @And("there is no scheduled execution")
   public void there_is_no_scheduled_execution() {
-    scheduledExecutions = scheduler.scheduled();
+    scheduledExecutions = schedulerUnderTest.scheduled();
     assertThat(scheduledExecutions).isEmpty();
   }
 
   @When("it is scheduled")
   public void it_is_scheduled() {
-    scheduler.schedule(givenExecutionPlan);
+    schedulerUnderTest.schedule(givenExecutionPlan);
   }
 
   @Then("it schedules an execution")
   public void it_schedules_an_execution() {
-    scheduledExecutions = scheduler.scheduled();
+    scheduledExecutions = schedulerUnderTest.scheduled();
     assertThat(scheduledExecutions.size()).isEqualTo(1);
   }
 

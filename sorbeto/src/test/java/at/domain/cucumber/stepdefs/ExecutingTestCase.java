@@ -41,8 +41,8 @@ public class ExecutingTestCase {
   @Then("the execution succeed")
   public void the_execution_succeed() {
     TestCaseExecutionReport expectedReport = new TestCaseExecutionReport();
-    TestCaseExecutionReport testCaseExecutionReport = sorbeto.follow(executionRequestId);
-    assertThat(testCaseExecutionReport).isEqualToComparingFieldByField(expectedReport);
+    TestCaseExecutionReport actualReport = sorbeto.follow(executionRequestId);
+    assertThat(actualReport).isEqualTo(expectedReport);
   }
 
 }
