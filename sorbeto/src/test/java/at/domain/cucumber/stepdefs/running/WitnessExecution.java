@@ -1,4 +1,4 @@
-package at.domain.cucumber.stepdefs;
+package at.domain.cucumber.stepdefs.running;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -6,7 +6,7 @@ import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
 import com.github.glacimonto.sorbeto.domain.running.compose.ExecutionPlan;
 import com.github.glacimonto.sorbeto.domain.running.play.IPlay;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ExecutionId;
-import com.github.glacimonto.sorbeto.domain.running.schedule.ExecutionStatus;
+import com.github.glacimonto.sorbeto.domain.running.schedule.RunningExecution;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ScheduledExecution;
 import com.github.glacimonto.sorbeto.domain.running.witness.DefaultWitnessImpl;
 import com.github.glacimonto.sorbeto.domain.running.witness.ExecutionReport;
@@ -66,27 +66,6 @@ public class WitnessExecution {
       witness.watch((new EndedEvent(executionExecution.id())));
     }
 
-  }
-
-  private class RunningExecution implements ScheduledExecution {
-    public RunningExecution(ExecutionId executionId, ExecutionPlan executionPlan) {
-
-    }
-
-    @Override
-    public ExecutionId id() {
-      return null;
-    }
-
-    @Override
-    public ExecutionStatus status() {
-      return null;
-    }
-
-    @Override
-    public ExecutionPlan plan() {
-      return null;
-    }
   }
 
 }

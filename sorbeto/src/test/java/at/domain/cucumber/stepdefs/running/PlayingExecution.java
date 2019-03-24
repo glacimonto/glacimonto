@@ -1,4 +1,4 @@
-package at.domain.cucumber.stepdefs;
+package at.domain.cucumber.stepdefs.running;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
