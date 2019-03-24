@@ -2,7 +2,6 @@ package at.domain.cucumber.stepdefs;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.github.glacimonto.sorbeto.domain.reporting.IRecord;
 import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
 import com.github.glacimonto.sorbeto.domain.running.compose.ExecutionPlan;
 import com.github.glacimonto.sorbeto.domain.running.play.IPlay;
@@ -20,17 +19,14 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import java.util.Collections;
 
 // TODO - find a name for recording and reporting
 // TODO - Model ExecutionReport domain entity
 public class WitnessExecution {
 
-  private final IRecord fakeRecorder = new FakeRecorder();
-
   private ScheduledExecution givenRunningExecution;
 
-  private IWitness witnessUnderTest = new DefaultWitnessImpl(Collections.singletonList(fakeRecorder));
+  private IWitness witnessUnderTest = new DefaultWitnessImpl();
   private final IPlay fakePlayer = new FakePlayer(witnessUnderTest);
   private ExecutionId executionId = new ExecutionId(42L);
 
@@ -70,9 +66,6 @@ public class WitnessExecution {
       witness.watch((new EndedEvent(executionExecution.id())));
     }
 
-  }
-
-  private class FakeRecorder implements IRecord {
   }
 
   private class RunningExecution implements ScheduledExecution {
