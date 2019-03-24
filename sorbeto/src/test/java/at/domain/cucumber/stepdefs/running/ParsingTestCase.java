@@ -1,10 +1,9 @@
 package at.domain.cucumber.stepdefs.running;
 
 import at.domain.testutils.TestContext;
-import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
+import com.github.glacimonto.sorbeto.domain.running.parse.DefaultParserImpl;
 import com.github.glacimonto.sorbeto.domain.running.parse.Example;
 import com.github.glacimonto.sorbeto.domain.running.parse.IParse;
-import com.github.glacimonto.sorbeto.domain.running.parse.DefaultParserImpl;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.assertj.core.api.Assertions;
@@ -21,7 +20,7 @@ public class ParsingTestCase {
 
   @Then("it produces an example")
   public void it_produces_an_example() {
-    Example expectedExample = new Example();
+    Example expectedExample = TestContext.SIMPLE_EXAMPLE;
     Assertions.assertThat(actualExample).isEqualTo(expectedExample);
   }
 

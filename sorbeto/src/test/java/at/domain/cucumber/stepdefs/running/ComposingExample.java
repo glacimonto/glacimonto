@@ -2,6 +2,7 @@ package at.domain.cucumber.stepdefs.running;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import at.domain.testutils.TestContext;
 import com.github.glacimonto.sorbeto.domain.running.compose.DefaultComposerImpl;
 import com.github.glacimonto.sorbeto.domain.running.compose.ExecutionPlan;
 import com.github.glacimonto.sorbeto.domain.running.compose.ICompose;
@@ -18,7 +19,7 @@ public class ComposingExample {
 
   @Given("an example")
   public void an_example_example() {
-    givenExample = new Example();
+    givenExample = TestContext.SIMPLE_EXAMPLE;
   }
 
   @When("it is composed")

@@ -11,7 +11,7 @@ import org.assertj.core.api.Assertions;
 
 public class ParsingTestCase {
 
-  private Example example;
+/*  private Example example;
   private IParse parser = new DefaultParserImpl();
 
   @When("it is parsed")
@@ -23,6 +23,6 @@ public class ParsingTestCase {
   public void it_produces_an_example() {
     Example expectedExample = new Example();
     Assertions.assertThat(example).isEqualTo(expectedExample);
-  }
+  }*/
 
 }
