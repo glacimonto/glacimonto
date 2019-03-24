@@ -9,7 +9,7 @@ import com.github.glacimonto.sorbeto.domain.running.schedule.ScheduledExecution;
 import com.github.glacimonto.sorbeto.domain.running.witness.DefaultWitnessImpl;
 import com.github.glacimonto.sorbeto.domain.running.witness.IWatch;
 import com.github.glacimonto.sorbeto.domain.running.witness.IWitness;
-import com.github.glacimonto.sorbeto.domain.running.witness.event.ExecutionEvent;
+import com.github.glacimonto.sorbeto.domain.running.witness.event.EndedEvent;
 import com.github.glacimonto.sorbeto.domain.running.witness.event.PlayingEvent;
 import com.github.glacimonto.sorbeto.domain.running.witness.event.StepSucceedEvent;
 import cucumber.api.java.en.Given;
@@ -18,14 +18,16 @@ import cucumber.api.java.en.When;
 import java.util.Collections;
 import org.assertj.core.api.Assertions;
 
+// TODO - find a name for recording and reporting
 public class WitnessExecution {
+
+  private final IRecord fakeRecorder = new FakeRecorder();
 
   private ScheduledExecution givenRunningExecution;
 
-  // TODO - find a name for recording and reporting
-  private final IRecord fakeRecorder = new FakeRecorder();
   private IWitness witnessUnderTest = new DefaultWitnessImpl(Collections.singletonList(fakeRecorder));
   private final IPlay fakePlayer = new FakePlayer(witnessUnderTest);
+  private ExecutionId executionId = new ExecutionId(42L);
 
   @Given("a running execution")
   public void a_running_execution() {
@@ -39,7 +41,7 @@ public class WitnessExecution {
 
   @Then("the execution is over")
   public void the_execution_is_over() {
-    Assertions.assertThat(witnessUnderTest.last()).isEqualTo(new EndEvent());
+    Assertions.assertThat(witnessUnderTest.last()).isEqualTo(new EndedEvent(executionId));
   }
 
   private class FakePlayer implements IPlay {
@@ -52,17 +54,14 @@ public class WitnessExecution {
 
     @Override
     public void play(ScheduledExecution givenPendingExecution) {
-      witness.watch((new PlayingEvent(){}));
-      for (int i = 0; i < 4; i++) { witness.watch(new StepSucceedEvent() {}); }
-      witness.watch((new EndEvent(){}));
+      witness.watch((new PlayingEvent(executionId)));
+      for (int i = 0; i < 4; i++) { witness.watch(new StepSucceedEvent(executionId)); }
+      witness.watch((new EndedEvent(executionId)));
     }
 
   }
 
   private class FakeRecorder implements IRecord {
-  }
-
-  private class EndEvent implements ExecutionEvent {
   }
 
   private class RunningExecution implements ScheduledExecution {
