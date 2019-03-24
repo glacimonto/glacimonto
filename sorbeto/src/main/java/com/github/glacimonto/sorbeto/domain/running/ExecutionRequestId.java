@@ -1,4 +1,4 @@
-package com.github.glacimonto.sorbeto.domain;
+package com.github.glacimonto.sorbeto.domain.running;
 
 import java.util.Objects;
 

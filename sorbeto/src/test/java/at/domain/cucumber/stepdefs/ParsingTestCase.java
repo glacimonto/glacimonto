@@ -1,7 +1,7 @@
 package at.domain.cucumber.stepdefs;
 
 import at.domain.testutils.TestContext;
-import com.github.glacimonto.sorbeto.domain.ExecutionRequestId;
+import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
 import com.github.glacimonto.sorbeto.domain.running.parse.Example;
 import com.github.glacimonto.sorbeto.domain.running.parse.IParse;
 import com.github.glacimonto.sorbeto.domain.running.parse.ParserImpl;

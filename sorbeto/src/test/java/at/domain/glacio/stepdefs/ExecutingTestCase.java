@@ -6,7 +6,7 @@ import at.domain.testutils.TestContext;
 import com.github.fridujo.glacio.running.api.Given;
 import com.github.fridujo.glacio.running.api.Then;
 import com.github.fridujo.glacio.running.api.When;
-import com.github.glacimonto.sorbeto.domain.ExecutionRequestId;
+import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
 import com.github.glacimonto.sorbeto.domain.Sorbeto;
 import com.github.glacimonto.sorbeto.domain.SorbetoImpl;
 import com.github.glacimonto.sorbeto.domain.reporting.DefaultReporterImpl;

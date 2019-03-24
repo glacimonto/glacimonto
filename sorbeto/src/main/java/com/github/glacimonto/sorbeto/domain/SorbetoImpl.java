@@ -2,6 +2,7 @@ package com.github.glacimonto.sorbeto.domain;
 
 import com.github.glacimonto.sorbeto.domain.reporting.IReport;
 import com.github.glacimonto.sorbeto.domain.reporting.TestCaseExecutionReport;
+import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
 import com.github.glacimonto.sorbeto.domain.running.IRun;
 
 public class SorbetoImpl implements Sorbeto {

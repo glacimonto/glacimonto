@@ -1,6 +1,6 @@
 package com.github.glacimonto.sorbeto.domain.reporting;
 
-import com.github.glacimonto.sorbeto.domain.ExecutionRequestId;
+import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
 
 public interface IReport {
 

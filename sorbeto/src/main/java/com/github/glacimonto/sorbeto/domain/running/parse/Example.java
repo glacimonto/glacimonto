@@ -1,6 +1,6 @@
 package com.github.glacimonto.sorbeto.domain.running.parse;
 
-import com.github.glacimonto.sorbeto.domain.ExecutionRequestId;
+import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
 import java.util.Objects;
 
 public class Example {

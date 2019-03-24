@@ -3,7 +3,7 @@ package at.domain.cucumber.stepdefs;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import at.domain.testutils.TestContext;
-import com.github.glacimonto.sorbeto.domain.ExecutionRequestId;
+import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
 import com.github.glacimonto.sorbeto.domain.Sorbeto;
 import com.github.glacimonto.sorbeto.domain.SorbetoImpl;
 import com.github.glacimonto.sorbeto.domain.reporting.DefaultReporterImpl;

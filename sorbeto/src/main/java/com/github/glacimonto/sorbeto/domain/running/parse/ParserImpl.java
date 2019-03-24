@@ -1,6 +1,6 @@
 package com.github.glacimonto.sorbeto.domain.running.parse;
 
-import com.github.glacimonto.sorbeto.domain.ExecutionRequestId;
+import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
 
 public class ParserImpl implements IParse {
 

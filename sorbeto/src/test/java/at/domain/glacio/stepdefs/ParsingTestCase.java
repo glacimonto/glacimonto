@@ -3,7 +3,7 @@ package at.domain.glacio.stepdefs;
 import at.domain.testutils.TestContext;
 import com.github.fridujo.glacio.running.api.Then;
 import com.github.fridujo.glacio.running.api.When;
-import com.github.glacimonto.sorbeto.domain.ExecutionRequestId;
+import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
 import com.github.glacimonto.sorbeto.domain.running.parse.Example;
 import com.github.glacimonto.sorbeto.domain.running.parse.IParse;
 import com.github.glacimonto.sorbeto.domain.running.parse.ParserImpl;
