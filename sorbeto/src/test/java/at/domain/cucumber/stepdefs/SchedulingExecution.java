@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.github.glacimonto.sorbeto.domain.ExecutionRequestId;
 import com.github.glacimonto.sorbeto.domain.running.compose.ExecutionPlan;
 import com.github.glacimonto.sorbeto.domain.running.schedule.DefaultSchedulerImpl;
+import com.github.glacimonto.sorbeto.domain.running.schedule.ExecutionId;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ExecutionStatus;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ISchedule;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ScheduledExecution;
@@ -46,6 +47,19 @@ public class SchedulingExecution {
   public void its_status_is_pending() {
     ExecutionStatus actualStatus = scheduledExecutions.get(0).status();
     assertThat(actualStatus).isEqualTo(ExecutionStatus.PENDING);
+  }
+
+  @And("it has a unique identifier")
+  public void it_has_a_unique_identifier() {
+    ExecutionId actualExecutionId = scheduledExecutions.get(0).id();
+    ExecutionId expectedExecutionId = new ExecutionId(42L);
+    assertThat(actualExecutionId).isEqualTo(expectedExecutionId);
+  }
+
+  @And("it corresponds to the given execution plan")
+  public void it_corresponds_to_the_given_execution_plan() {
+    ExecutionPlan actualExecutionPlan = scheduledExecutions.get(0).plan();
+    assertThat(actualExecutionPlan).isEqualTo(givenExecutionPlan);
   }
 
 }

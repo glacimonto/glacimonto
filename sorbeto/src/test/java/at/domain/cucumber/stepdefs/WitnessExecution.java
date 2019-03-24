@@ -1,7 +1,10 @@
 package at.domain.cucumber.stepdefs;
 
 import com.github.glacimonto.sorbeto.domain.reporting.IRecord;
+import com.github.glacimonto.sorbeto.domain.running.compose.ExecutionPlan;
 import com.github.glacimonto.sorbeto.domain.running.play.IPlay;
+import com.github.glacimonto.sorbeto.domain.running.schedule.ExecutionId;
+import com.github.glacimonto.sorbeto.domain.running.schedule.ExecutionStatus;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ScheduledExecution;
 import com.github.glacimonto.sorbeto.domain.running.witness.DefaultWitnessImpl;
 import com.github.glacimonto.sorbeto.domain.running.witness.IWatch;
@@ -26,7 +29,7 @@ public class WitnessExecution {
 
   @Given("a running execution")
   public void a_running_execution() {
-    givenRunningExecution = new ScheduledExecution();
+    givenRunningExecution = new RunningExecution();
   }
 
   @When("all its steps succeed")
@@ -60,5 +63,22 @@ public class WitnessExecution {
   }
 
   private class EndEvent implements ExecutionEvent {
+  }
+
+  private class RunningExecution implements ScheduledExecution {
+    @Override
+    public ExecutionId id() {
+      return null;
+    }
+
+    @Override
+    public ExecutionStatus status() {
+      return null;
+    }
+
+    @Override
+    public ExecutionPlan plan() {
+      return null;
+    }
   }
 }

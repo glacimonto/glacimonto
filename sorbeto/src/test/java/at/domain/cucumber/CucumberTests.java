@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
   plugin   = { "pretty", "json:target/cucumber-report.json" },
   features = { "classpath:at/domain/cucumber" },
   glue     = { "at.domain.cucumber.stepdefs" },
-  tags     = { "@Composer", "not @Ignore" })
+  tags     = { "@Scheduler", "not @Ignore" })
 
 public class CucumberTests {
 

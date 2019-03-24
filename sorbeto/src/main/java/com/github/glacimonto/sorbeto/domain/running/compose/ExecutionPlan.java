@@ -1,6 +1,7 @@
 package com.github.glacimonto.sorbeto.domain.running.compose;
 
 import com.github.glacimonto.sorbeto.domain.ExecutionRequestId;
+import java.util.Objects;
 
 public class ExecutionPlan {
 
@@ -18,24 +19,16 @@ public class ExecutionPlan {
   }
 
   @Override
-  public int hashCode() {
-    int hash = 17;
-    if (executionRequestId != null) {
-      hash = 31 * hash + executionRequestId.hashCode();
-    }
-    return hash;
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ExecutionPlan that = (ExecutionPlan) o;
+    return executionRequestId.equals(that.executionRequestId);
   }
 
   @Override
-  public boolean equals(Object o) {
-    if (o == this)
-      return true;
-    if (!(o instanceof ExecutionPlan))
-      return false;
-    ExecutionPlan other = (ExecutionPlan) o;
-
-    return (this.executionRequestId == null && other.executionRequestId == null)
-      || (this.executionRequestId != null && this.executionRequestId.equals(other.executionRequestId));
+  public int hashCode() {
+    return Objects.hash(executionRequestId);
   }
 
 }

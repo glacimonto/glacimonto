@@ -1,12 +1,13 @@
 package com.github.glacimonto.sorbeto.domain.running.schedule;
 
-public class ScheduledExecution {
+import com.github.glacimonto.sorbeto.domain.running.compose.ExecutionPlan;
 
-  public ExecutionStatus status() {
-    return null;
-  }
+public interface ScheduledExecution {
 
-  public ExecutionId executionId() {
-    return new ExecutionId();
-  }
+  ExecutionId id();
+
+  ExecutionStatus status();
+
+  ExecutionPlan plan();
+
 }

@@ -1,6 +1,8 @@
 package com.github.glacimonto.sorbeto.domain;
 
-public class ExecutionRequestId {
+import java.util.Objects;
+
+public final class ExecutionRequestId {
 
   private final Long id;
 
@@ -16,19 +18,16 @@ public class ExecutionRequestId {
   }
 
   @Override
-  public int hashCode() {
-    return 17 * 31 + id.hashCode();
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ExecutionRequestId that = (ExecutionRequestId) o;
+    return id.equals(that.id);
   }
 
   @Override
-  public boolean equals(Object o) {
-    if (o == this)
-      return true;
-    if (!(o instanceof ExecutionRequestId))
-      return false;
-    ExecutionRequestId other = (ExecutionRequestId) o;
-
-    return this.id.equals(other.id);
+  public int hashCode() {
+    return Objects.hash(id);
   }
 
 }

@@ -1,6 +1,7 @@
 package com.github.glacimonto.sorbeto.domain.running.parse;
 
 import com.github.glacimonto.sorbeto.domain.ExecutionRequestId;
+import java.util.Objects;
 
 public class Example {
 
@@ -11,24 +12,23 @@ public class Example {
   }
 
   @Override
-  public int hashCode() {
-    int hash = 17;
-    if (executionRequestId != null) {
-      hash = 31 * hash + executionRequestId.hashCode();
-    }
-    return hash;
+  public String toString() {
+    return "Example{" +
+      "executionRequestId=" + executionRequestId +
+      '}';
   }
 
   @Override
   public boolean equals(Object o) {
-    if (o == this)
-      return true;
-    if (!(o instanceof Example))
-      return false;
-    Example other = (Example) o;
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Example example = (Example) o;
+    return executionRequestId.equals(example.executionRequestId);
+  }
 
-    return (this.executionRequestId == null && other.executionRequestId == null)
-      || (this.executionRequestId != null && this.executionRequestId.equals(other.executionRequestId));
+  @Override
+  public int hashCode() {
+    return Objects.hash(executionRequestId);
   }
 
 }

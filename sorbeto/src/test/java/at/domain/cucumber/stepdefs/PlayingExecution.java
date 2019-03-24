@@ -2,8 +2,12 @@ package at.domain.cucumber.stepdefs;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.github.glacimonto.sorbeto.domain.ExecutionRequestId;
+import com.github.glacimonto.sorbeto.domain.running.compose.ExecutionPlan;
 import com.github.glacimonto.sorbeto.domain.running.play.DefaultPlayerImpl;
 import com.github.glacimonto.sorbeto.domain.running.play.IPlay;
+import com.github.glacimonto.sorbeto.domain.running.schedule.ExecutionId;
+import com.github.glacimonto.sorbeto.domain.running.schedule.PendingExecution;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ScheduledExecution;
 import com.github.glacimonto.sorbeto.domain.running.witness.ITell;
 import com.github.glacimonto.sorbeto.domain.running.witness.event.ExecutionEvent;
@@ -24,7 +28,7 @@ public class PlayingExecution {
 
   @Given("a pending execution")
   public void a_pending_execution() {
-    givenPendingExecution = new ScheduledExecution();
+    givenPendingExecution = new PendingExecution(new ExecutionId(42L), new ExecutionPlan(new ExecutionRequestId(0L)));
   }
 
   @When("it is played")
