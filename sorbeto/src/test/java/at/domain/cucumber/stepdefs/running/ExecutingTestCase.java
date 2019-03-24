@@ -3,14 +3,20 @@ package at.domain.cucumber.stepdefs.running;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import at.domain.testutils.TestContext;
-import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
 import com.github.glacimonto.sorbeto.domain.Sorbeto;
 import com.github.glacimonto.sorbeto.domain.SorbetoImpl;
 import com.github.glacimonto.sorbeto.domain.reporting.DefaultReporterImpl;
 import com.github.glacimonto.sorbeto.domain.reporting.IReport;
 import com.github.glacimonto.sorbeto.domain.reporting.TestCaseExecutionReport;
 import com.github.glacimonto.sorbeto.domain.running.DefaultRunnerImpl;
+import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
 import com.github.glacimonto.sorbeto.domain.running.IRun;
+import com.github.glacimonto.sorbeto.domain.running.compose.DefaultComposerImpl;
+import com.github.glacimonto.sorbeto.domain.running.compose.ICompose;
+import com.github.glacimonto.sorbeto.domain.running.parse.IParse;
+import com.github.glacimonto.sorbeto.domain.running.parse.ParserImpl;
+import com.github.glacimonto.sorbeto.domain.running.schedule.DefaultSchedulerImpl;
+import com.github.glacimonto.sorbeto.domain.running.schedule.ISchedule;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -23,7 +29,10 @@ public class ExecutingTestCase {
 
   @Before
   public void setup() {
-    IRun engine = new DefaultRunnerImpl();
+    IParse parser = new ParserImpl();
+    ICompose composer = new DefaultComposerImpl();
+    ISchedule scheduler = new DefaultSchedulerImpl();
+    IRun engine = new DefaultRunnerImpl(parser, composer, scheduler);
     IReport reporter = new DefaultReporterImpl();
     sorbeto = new SorbetoImpl(engine, reporter);
   }

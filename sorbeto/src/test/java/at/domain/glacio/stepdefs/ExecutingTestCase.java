@@ -15,7 +15,7 @@ import com.github.glacimonto.sorbeto.domain.running.DefaultRunnerImpl;
 
 public class ExecutingTestCase {
 
-  private Sorbeto sorbeto = new SorbetoImpl(new DefaultRunnerImpl(), new DefaultReporterImpl());
+/*  private Sorbeto sorbeto = new SorbetoImpl(new DefaultRunnerImpl(), new DefaultReporterImpl());
 
   private ExecutionRequestId executionRequestId;
 
@@ -34,5 +34,5 @@ public class ExecutingTestCase {
     TestCaseExecutionReport expectedReport = new TestCaseExecutionReport();
     TestCaseExecutionReport testCaseExecutionReport = sorbeto.follow(executionRequestId);
     assertThat(testCaseExecutionReport).isEqualToComparingFieldByField(expectedReport);
-  }
+  }*/
 }
