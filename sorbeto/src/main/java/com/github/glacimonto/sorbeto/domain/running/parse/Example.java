@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Example {
 
-  private final ExecutionRequestId executionRequestId;
+  public final ExecutionRequestId executionRequestId;
 
   public Example(ExecutionRequestId executionRequestId) {
     this.executionRequestId = executionRequestId;

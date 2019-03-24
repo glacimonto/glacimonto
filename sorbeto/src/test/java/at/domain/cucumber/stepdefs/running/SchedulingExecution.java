@@ -1,7 +1,9 @@
 package at.domain.cucumber.stepdefs.running;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
 
+import com.github.glacimonto.sorbeto.domain.reporting.IRecord;
 import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
 import com.github.glacimonto.sorbeto.domain.running.compose.ExecutionPlan;
 import com.github.glacimonto.sorbeto.domain.running.schedule.DefaultSchedulerImpl;
@@ -18,8 +20,9 @@ import java.util.List;
 public class SchedulingExecution {
 
   private ExecutionPlan givenExecutionPlan;
-  private ISchedule schedulerUnderTest = new DefaultSchedulerImpl();
+  private ISchedule schedulerUnderTest = new DefaultSchedulerImpl(mock(IRecord.class));
   private List<ScheduledExecution> scheduledExecutions;
+  private ExecutionRequestId executionRequestId = new ExecutionRequestId(4242L);
 
   @Given("an execution plan")
   public void an_execution_plan() {
@@ -34,7 +37,7 @@ public class SchedulingExecution {
 
   @When("it is scheduled")
   public void it_is_scheduled() {
-    schedulerUnderTest.schedule(givenExecutionPlan);
+    schedulerUnderTest.schedule(executionRequestId, givenExecutionPlan);
   }
 
   @Then("it schedules an execution")

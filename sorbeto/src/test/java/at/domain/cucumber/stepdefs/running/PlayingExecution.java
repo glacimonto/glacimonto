@@ -2,6 +2,7 @@ package at.domain.cucumber.stepdefs.running;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.github.glacimonto.sorbeto.domain.reporting.IRecord;
 import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
 import com.github.glacimonto.sorbeto.domain.running.compose.ExecutionPlan;
 import com.github.glacimonto.sorbeto.domain.running.play.DefaultPlayerImpl;
@@ -30,10 +31,11 @@ public class PlayingExecution {
   private IWitness fakeWitness = new FakeWitness();
   private IPlay playerUnderTest = new DefaultPlayerImpl(fakeWitness);
   private ExecutionId executionId = new ExecutionId(42L);
+  private ExecutionRequestId executionRequestId = new ExecutionRequestId(4242L);
 
   @Given("a pending execution")
   public void a_pending_execution() {
-    givenPendingExecution = new PendingExecution(executionId, new ExecutionPlan(new ExecutionRequestId(0L)));
+    givenPendingExecution = new PendingExecution(executionRequestId, executionId, new ExecutionPlan(new ExecutionRequestId(0L)));
   }
 
   @When("it is played")
@@ -50,7 +52,7 @@ public class PlayingExecution {
 
   @And("it produces X events")
   public void it_produces_X_events() {
-    assertThat(fakeWitness.count()).isEqualTo(2);
+    assertThat(fakeWitness.count()).isEqualTo(3);
   }
 
   @And("each step execution event is a success")
@@ -69,6 +71,11 @@ public class PlayingExecution {
 
     @Override
     public ExecutionReport report() {
+      throw new NotImplementedException();
+    }
+
+    @Override
+    public void register(List<IRecord> reporter) {
       throw new NotImplementedException();
     }
 

@@ -1,6 +1,7 @@
 package at.domain.cucumber.stepdefs.running;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
 
 import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
 import com.github.glacimonto.sorbeto.domain.running.compose.ExecutionPlan;
@@ -26,13 +27,14 @@ public class WitnessExecution {
 
   private ScheduledExecution givenRunningExecution;
 
-  private IWitness witnessUnderTest = new DefaultWitnessImpl();
-  private final IPlay fakePlayer = new FakePlayer(witnessUnderTest);
+  private ExecutionRequestId executionRequestId = new ExecutionRequestId(4242L);
   private ExecutionId executionId = new ExecutionId(42L);
+  private IWitness witnessUnderTest = new DefaultWitnessImpl(executionRequestId, executionId, mock(ExecutionPlan.class));
+  private final IPlay fakePlayer = new FakePlayer(witnessUnderTest);
 
   @Given("a running execution")
   public void a_running_execution() {
-    givenRunningExecution = new RunningExecution(executionId, new ExecutionPlan(new ExecutionRequestId(0L)));
+    givenRunningExecution = new RunningExecution(executionRequestId, executionId, new ExecutionPlan(new ExecutionRequestId(0L)));
   }
 
   @When("all its steps succeed")
@@ -47,7 +49,7 @@ public class WitnessExecution {
 
   @And("it tells a successful execution")
   public void it_tells_a_successful_execution() {
-    ExecutionReport expectedReport = new ExecutionReport();
+    ExecutionReport expectedReport = new ExecutionReport(executionRequestId, executionId);
     assertThat(witnessUnderTest.report()).isEqualTo(expectedReport);
   }
 

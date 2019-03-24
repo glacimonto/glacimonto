@@ -5,8 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import at.domain.testutils.TestContext;
 import com.github.glacimonto.sorbeto.domain.Sorbeto;
 import com.github.glacimonto.sorbeto.domain.SorbetoImpl;
-import com.github.glacimonto.sorbeto.domain.reporting.DefaultReporterImpl;
-import com.github.glacimonto.sorbeto.domain.reporting.IReport;
+import com.github.glacimonto.sorbeto.domain.reporting.DefaultJournalistImpl;
+import com.github.glacimonto.sorbeto.domain.reporting.Journalist;
 import com.github.glacimonto.sorbeto.domain.reporting.TestCaseExecutionReport;
 import com.github.glacimonto.sorbeto.domain.running.DefaultRunnerImpl;
 import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
@@ -31,9 +31,9 @@ public class ExecutingTestCase {
   public void setup() {
     IParse parser = new ParserImpl();
     ICompose composer = new DefaultComposerImpl();
-    ISchedule scheduler = new DefaultSchedulerImpl();
+    Journalist reporter = new DefaultJournalistImpl();
+    ISchedule scheduler = new DefaultSchedulerImpl(reporter);
     IRun engine = new DefaultRunnerImpl(parser, composer, scheduler);
-    IReport reporter = new DefaultReporterImpl();
     sorbeto = new SorbetoImpl(engine, reporter);
   }
 
@@ -49,7 +49,7 @@ public class ExecutingTestCase {
 
   @Then("the execution succeed")
   public void the_execution_succeed() {
-    TestCaseExecutionReport expectedReport = new TestCaseExecutionReport();
+    TestCaseExecutionReport expectedReport = new TestCaseExecutionReport(executionRequestId);
     TestCaseExecutionReport actualReport = sorbeto.follow(executionRequestId);
     assertThat(actualReport).isEqualTo(expectedReport);
   }

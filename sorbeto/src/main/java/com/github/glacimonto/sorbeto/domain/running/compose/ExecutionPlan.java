@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class ExecutionPlan {
 
-  private final ExecutionRequestId executionRequestId;
+  public final ExecutionRequestId executionRequestId;
 
   public ExecutionPlan(ExecutionRequestId executionRequestId) {
     this.executionRequestId = executionRequestId;

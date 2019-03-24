@@ -1,6 +1,7 @@
 package at.domain.cucumber.stepdefs.reporting;
 
-import com.github.glacimonto.sorbeto.domain.reporting.DefaultReporterImpl;
+import com.github.glacimonto.sorbeto.domain.reporting.DefaultJournalistImpl;
+import com.github.glacimonto.sorbeto.domain.reporting.IRecord;
 import com.github.glacimonto.sorbeto.domain.reporting.IReport;
 import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
 import com.github.glacimonto.sorbeto.domain.running.compose.ExecutionPlan;
@@ -15,17 +16,18 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import java.util.List;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class ReportingTestCase {
 
   private ITell testTeller = new TestTeller();
 
-  private final IReport reporterUnderTest = new DefaultReporterImpl();
+  private final IReport reporterUnderTest = new DefaultJournalistImpl();
 
   @Given("a running test case")
   public void a_running_test_case() {
     ExecutionRequestId executionRequestId = new ExecutionRequestId(42L);
-    ScheduledExecution runningExecution = new RunningExecution(new ExecutionId(0L), new ExecutionPlan(executionRequestId));
+    ScheduledExecution runningExecution = new RunningExecution(executionRequestId, new ExecutionId(0L), new ExecutionPlan(executionRequestId));
 
     RequestedExecution requestedExecution = new RequestedExecution();
   }
@@ -55,6 +57,11 @@ public class ReportingTestCase {
     @Override
     public ExecutionReport report() {
       return null;
+    }
+
+    @Override
+    public void register(List<IRecord> reporter) {
+      throw new NotImplementedException();
     }
 
   }
