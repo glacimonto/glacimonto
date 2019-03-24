@@ -1,9 +1,10 @@
 package com.github.glacimonto.sorbeto.domain.running.compose;
 
+import com.github.glacimonto.sorbeto.domain.ExecutionRequestId;
 import com.github.glacimonto.sorbeto.domain.running.parse.Example;
 
 public interface ICompose {
 
-  ExecutionPlan compose(Example givenExample);
+  ExecutionPlan compose(ExecutionRequestId executionRequestId, Example givenExample);
 
 }

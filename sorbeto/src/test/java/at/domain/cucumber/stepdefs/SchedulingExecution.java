@@ -2,6 +2,7 @@ package at.domain.cucumber.stepdefs;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.github.glacimonto.sorbeto.domain.ExecutionRequestId;
 import com.github.glacimonto.sorbeto.domain.running.compose.ExecutionPlan;
 import com.github.glacimonto.sorbeto.domain.running.schedule.DefaultSchedulerImpl;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ExecutionStatus;
@@ -21,7 +22,7 @@ public class SchedulingExecution {
 
   @Given("an execution plan")
   public void an_execution_plan() {
-    givenExecutionPlan = new ExecutionPlan();
+    givenExecutionPlan = new ExecutionPlan(new ExecutionRequestId(0L));
   }
 
   @And("there is no scheduled execution")
