@@ -34,7 +34,7 @@ public class WitnessExecution {
 
   @Given("a running execution")
   public void a_running_execution() {
-    givenRunningExecution = new RunningExecution(executionRequestId, executionId, new ExecutionPlan(new ExecutionRequestId(0L)));
+    givenRunningExecution = new RunningExecution(executionRequestId, executionId, new ExecutionPlan());
   }
 
   @When("all its steps succeed")

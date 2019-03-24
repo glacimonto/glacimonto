@@ -16,12 +16,12 @@ public class ParsingTestCase {
 
   @When("it is parsed")
   public void it_is_parsed() {
-    example = parser.parse(new ExecutionRequestId(0L), TestContext.TEST_CASE);
+    example = parser.parse(TestContext.TEST_CASE);
   }
 
   @Then("it produces an example")
   public void it_produces_an_example() {
-    Example expectedExample = new Example(new ExecutionRequestId(0L));
+    Example expectedExample = new Example();
     Assertions.assertThat(example).isEqualTo(expectedExample);
   }
 

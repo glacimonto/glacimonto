@@ -27,7 +27,7 @@ public class ReportingTestCase {
   @Given("a running test case")
   public void a_running_test_case() {
     ExecutionRequestId executionRequestId = new ExecutionRequestId(42L);
-    ScheduledExecution runningExecution = new RunningExecution(executionRequestId, new ExecutionId(0L), new ExecutionPlan(executionRequestId));
+    ScheduledExecution runningExecution = new RunningExecution(executionRequestId, new ExecutionId(0L), new ExecutionPlan());
 
     RequestedExecution requestedExecution = new RequestedExecution();
   }

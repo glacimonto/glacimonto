@@ -26,7 +26,7 @@ public class SchedulingExecution {
 
   @Given("an execution plan")
   public void an_execution_plan() {
-    givenExecutionPlan = new ExecutionPlan(new ExecutionRequestId(0L));
+    givenExecutionPlan = new ExecutionPlan();
   }
 
   @And("there is no scheduled execution")

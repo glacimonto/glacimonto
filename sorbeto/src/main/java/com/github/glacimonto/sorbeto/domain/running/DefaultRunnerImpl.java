@@ -21,8 +21,8 @@ public class DefaultRunnerImpl implements IRun {
   @Override
   public ExecutionRequestId run(String testCase) {
     final ExecutionRequestId executionRequestId = generateExecutionId(testCase);
-    Example example = parser.parse(executionRequestId, testCase);
-    ExecutionPlan executionPlan = composer.compose(executionRequestId, example);
+    Example example = parser.parse(testCase);
+    ExecutionPlan executionPlan = composer.compose(example);
     scheduler.schedule(executionRequestId, executionPlan); // TODO - take a list of execution plan
     return executionRequestId;
   }

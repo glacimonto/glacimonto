@@ -35,7 +35,7 @@ public class PlayingExecution {
 
   @Given("a pending execution")
   public void a_pending_execution() {
-    givenPendingExecution = new PendingExecution(executionRequestId, executionId, new ExecutionPlan(new ExecutionRequestId(0L)));
+    givenPendingExecution = new PendingExecution(executionRequestId, executionId, new ExecutionPlan());
   }
 
   @When("it is played")
