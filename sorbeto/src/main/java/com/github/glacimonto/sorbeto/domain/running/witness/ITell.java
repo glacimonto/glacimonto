@@ -36,4 +36,5 @@ public interface ITell {
       .collect(Collectors.toList());
   }
 
+  ExecutionReport report();
 }

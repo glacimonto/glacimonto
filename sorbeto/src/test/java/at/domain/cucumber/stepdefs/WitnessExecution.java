@@ -1,24 +1,29 @@
 package at.domain.cucumber.stepdefs;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.github.glacimonto.sorbeto.domain.reporting.IRecord;
+import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
 import com.github.glacimonto.sorbeto.domain.running.compose.ExecutionPlan;
 import com.github.glacimonto.sorbeto.domain.running.play.IPlay;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ExecutionId;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ExecutionStatus;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ScheduledExecution;
 import com.github.glacimonto.sorbeto.domain.running.witness.DefaultWitnessImpl;
+import com.github.glacimonto.sorbeto.domain.running.witness.ExecutionReport;
 import com.github.glacimonto.sorbeto.domain.running.witness.IWatch;
 import com.github.glacimonto.sorbeto.domain.running.witness.IWitness;
 import com.github.glacimonto.sorbeto.domain.running.witness.event.EndedEvent;
 import com.github.glacimonto.sorbeto.domain.running.witness.event.PlayingEvent;
 import com.github.glacimonto.sorbeto.domain.running.witness.event.StepSucceedEvent;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import java.util.Collections;
-import org.assertj.core.api.Assertions;
 
 // TODO - find a name for recording and reporting
+// TODO - Model ExecutionReport domain entity
 public class WitnessExecution {
 
   private final IRecord fakeRecorder = new FakeRecorder();
@@ -31,7 +36,7 @@ public class WitnessExecution {
 
   @Given("a running execution")
   public void a_running_execution() {
-    givenRunningExecution = new RunningExecution();
+    givenRunningExecution = new RunningExecution(executionId, new ExecutionPlan(new ExecutionRequestId(0L)));
   }
 
   @When("all its steps succeed")
@@ -41,7 +46,13 @@ public class WitnessExecution {
 
   @Then("the execution is over")
   public void the_execution_is_over() {
-    Assertions.assertThat(witnessUnderTest.last()).isEqualTo(new EndedEvent(executionId));
+    assertThat(witnessUnderTest.last()).isEqualTo(new EndedEvent(executionId));
+  }
+
+  @And("it tells a successful execution")
+  public void it_tells_a_successful_execution() {
+    ExecutionReport expectedReport = new ExecutionReport();
+    assertThat(witnessUnderTest.report()).isEqualTo(expectedReport);
   }
 
   private class FakePlayer implements IPlay {
@@ -53,10 +64,10 @@ public class WitnessExecution {
     }
 
     @Override
-    public void play(ScheduledExecution givenPendingExecution) {
-      witness.watch((new PlayingEvent(executionId)));
-      for (int i = 0; i < 4; i++) { witness.watch(new StepSucceedEvent(executionId)); }
-      witness.watch((new EndedEvent(executionId)));
+    public void play(ScheduledExecution executionExecution) {
+      witness.watch((new PlayingEvent(executionExecution.id())));
+      for (int i = 0; i < 4; i++) { witness.watch(new StepSucceedEvent(executionExecution.id())); }
+      witness.watch((new EndedEvent(executionExecution.id())));
     }
 
   }
@@ -65,6 +76,10 @@ public class WitnessExecution {
   }
 
   private class RunningExecution implements ScheduledExecution {
+    public RunningExecution(ExecutionId executionId, ExecutionPlan executionPlan) {
+
+    }
+
     @Override
     public ExecutionId id() {
       return null;
@@ -80,4 +95,5 @@ public class WitnessExecution {
       return null;
     }
   }
+
 }

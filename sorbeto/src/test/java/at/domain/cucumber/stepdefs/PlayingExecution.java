@@ -9,6 +9,7 @@ import com.github.glacimonto.sorbeto.domain.running.play.IPlay;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ExecutionId;
 import com.github.glacimonto.sorbeto.domain.running.schedule.PendingExecution;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ScheduledExecution;
+import com.github.glacimonto.sorbeto.domain.running.witness.ExecutionReport;
 import com.github.glacimonto.sorbeto.domain.running.witness.IWitness;
 import com.github.glacimonto.sorbeto.domain.running.witness.event.ExecutionEvent;
 import com.github.glacimonto.sorbeto.domain.running.witness.event.PlayingEvent;
@@ -19,6 +20,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import java.util.ArrayList;
 import java.util.List;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 // TODO - Model ExecutionPlan domain entity
 // TODO - Model each ExecutionEvent domain events
@@ -63,6 +65,11 @@ public class PlayingExecution {
     @Override
     public List<ExecutionEvent> events() {
       return events;
+    }
+
+    @Override
+    public ExecutionReport report() {
+      throw new NotImplementedException();
     }
 
     @Override

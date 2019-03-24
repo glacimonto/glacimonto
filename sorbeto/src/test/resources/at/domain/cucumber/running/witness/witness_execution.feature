@@ -7,5 +7,5 @@ Feature: For witnessing an execution
     Given a running execution
     When all its steps succeed
     Then the execution is over
-    And the execution succeed
+    And it tells a successful execution
 

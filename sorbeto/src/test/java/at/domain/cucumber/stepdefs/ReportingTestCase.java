@@ -3,6 +3,7 @@ package at.domain.cucumber.stepdefs;
 import com.github.glacimonto.sorbeto.domain.reporting.DefaultReporterImpl;
 import com.github.glacimonto.sorbeto.domain.reporting.IReport;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ScheduledExecution;
+import com.github.glacimonto.sorbeto.domain.running.witness.ExecutionReport;
 import com.github.glacimonto.sorbeto.domain.running.witness.ITell;
 import com.github.glacimonto.sorbeto.domain.running.witness.event.ExecutionEvent;
 import cucumber.api.java.en.And;
@@ -42,6 +43,11 @@ public class ReportingTestCase {
 
     @Override
     public List<ExecutionEvent> events() {
+      return null;
+    }
+
+    @Override
+    public ExecutionReport report() {
       return null;
     }
 
