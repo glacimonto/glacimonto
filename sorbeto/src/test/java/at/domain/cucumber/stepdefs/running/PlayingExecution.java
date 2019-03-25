@@ -52,12 +52,12 @@ public class PlayingExecution {
 
   @And("it produces X events")
   public void it_produces_X_events() {
-    assertThat(fakeWitness.count()).isEqualTo(3);
+    assertThat(fakeWitness.count()).isEqualTo(6);
   }
 
   @And("each step execution event is a success")
   public void each_step_execution_event_is_a_success() {
-    assertThat(fakeWitness.steps()).isNotEmpty().allMatch(e -> e instanceof StepSucceedEvent);
+    assertThat(fakeWitness.endedSteps()).hasSize(2).allMatch(e -> e instanceof StepSucceedEvent);
   }
 
   private class FakeWitness implements IWitness {

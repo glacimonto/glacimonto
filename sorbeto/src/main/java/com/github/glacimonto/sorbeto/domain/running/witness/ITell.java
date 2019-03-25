@@ -6,7 +6,10 @@ import com.github.glacimonto.sorbeto.domain.reporting.IRecord;
 import com.github.glacimonto.sorbeto.domain.running.witness.event.ExecutionEvent;
 import com.github.glacimonto.sorbeto.domain.running.witness.event.NoEvent;
 import com.github.glacimonto.sorbeto.domain.running.witness.event.StepExecutionEvent;
+import com.github.glacimonto.sorbeto.domain.running.witness.event.StepFailedEvent;
+import com.github.glacimonto.sorbeto.domain.running.witness.event.StepSucceedEvent;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public interface ITell {
@@ -33,8 +36,16 @@ public interface ITell {
   }
 
   default List<ExecutionEvent> steps() {
+    return steps(e -> e instanceof StepExecutionEvent);
+  }
+
+  default List<ExecutionEvent> endedSteps() {
+    return steps(e -> e instanceof StepSucceedEvent || e instanceof StepFailedEvent);
+  }
+
+  default List<ExecutionEvent> steps(Predicate<ExecutionEvent> predicate) {
     return events().stream()
-      .filter(e -> e instanceof StepExecutionEvent)
+      .filter(predicate)
       .collect(Collectors.toList());
   }
 
