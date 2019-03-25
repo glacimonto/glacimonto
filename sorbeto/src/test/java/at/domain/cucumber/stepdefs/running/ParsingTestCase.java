@@ -21,6 +21,7 @@ public class ParsingTestCase {
   @Then("it produces an example")
   public void it_produces_an_example() {
     Example expectedExample = TestContext.SIMPLE_EXAMPLE;
+    Assertions.assertThat(actualExample).isNotEqualTo(Example.builder().build());
     Assertions.assertThat(actualExample).isEqualTo(expectedExample);
   }
 

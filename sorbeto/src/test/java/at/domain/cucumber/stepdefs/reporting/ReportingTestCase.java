@@ -1,5 +1,7 @@
 package at.domain.cucumber.stepdefs.reporting;
 
+import static org.mockito.Mockito.mock;
+
 import com.github.glacimonto.sorbeto.domain.reporting.DefaultReporterImpl;
 import com.github.glacimonto.sorbeto.domain.reporting.IRecord;
 import com.github.glacimonto.sorbeto.domain.reporting.IReport;
@@ -27,7 +29,7 @@ public class ReportingTestCase {
   @Given("a running test case")
   public void a_running_test_case() {
     ExecutionRequestId executionRequestId = new ExecutionRequestId(42L);
-    ScheduledExecution runningExecution = new RunningExecution(executionRequestId, new ExecutionId(0L), new ExecutionPlan());
+    ScheduledExecution runningExecution = new RunningExecution(executionRequestId, new ExecutionId(0L), mock(ExecutionPlan.class));
 
     RequestedExecution requestedExecution = new RequestedExecution();
   }

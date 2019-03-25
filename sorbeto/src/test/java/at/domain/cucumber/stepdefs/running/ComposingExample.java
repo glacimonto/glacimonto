@@ -29,7 +29,8 @@ public class ComposingExample {
 
   @Then("it produces an execution plan")
   public void it_produces_an_execution_plan() {
-    ExecutionPlan expectedExecutionPlan = new ExecutionPlan();
+    ExecutionPlan expectedExecutionPlan = TestContext.SIMPLE_EXECUTION_PLAN;
+    assertThat(actualExecutionPlan).isNotEqualTo(ExecutionPlan.builder().build());
     assertThat(actualExecutionPlan).isEqualTo(expectedExecutionPlan);
   }
 

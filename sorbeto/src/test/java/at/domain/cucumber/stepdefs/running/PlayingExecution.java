@@ -2,6 +2,7 @@ package at.domain.cucumber.stepdefs.running;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import at.domain.testutils.TestContext;
 import com.github.glacimonto.sorbeto.domain.reporting.IRecord;
 import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
 import com.github.glacimonto.sorbeto.domain.running.compose.ExecutionPlan;
@@ -35,7 +36,7 @@ public class PlayingExecution {
 
   @Given("a pending execution")
   public void a_pending_execution() {
-    givenPendingExecution = new PendingExecution(executionRequestId, executionId, new ExecutionPlan());
+    givenPendingExecution = new PendingExecution(executionRequestId, executionId, TestContext.SIMPLE_EXECUTION_PLAN);
   }
 
   @When("it is played")

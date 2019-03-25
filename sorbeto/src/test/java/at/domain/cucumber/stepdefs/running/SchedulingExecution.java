@@ -26,7 +26,7 @@ public class SchedulingExecution {
 
   @Given("an execution plan")
   public void an_execution_plan() {
-    givenExecutionPlan = new ExecutionPlan();
+    givenExecutionPlan = mock(ExecutionPlan.class); // TODO - do not mock me later
   }
 
   @And("there is no scheduled execution")
