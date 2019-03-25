@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public final class ExecutionId {
 
+  public static final ExecutionId NO_EXECUTION = new ExecutionId(-1L);
+
   private final Long id;
 
   public ExecutionId(long id) {

@@ -3,11 +3,11 @@ package com.github.glacimonto.sorbeto.domain.running.witness.event;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ExecutionId;
 import java.util.Objects;
 
-public final class NullEvent implements ExecutionEvent {
+public final class NoEvent implements ExecutionEvent {
 
   private final ExecutionId executionId;
 
-  public NullEvent(ExecutionId executionId) {
+  public NoEvent(ExecutionId executionId) {
     this.executionId = executionId;
   }
 
@@ -18,7 +18,7 @@ public final class NullEvent implements ExecutionEvent {
 
   @Override
   public String type() {
-    return "NULL_EVENT";
+    return "NO_EVENT";
   }
 
   @Override

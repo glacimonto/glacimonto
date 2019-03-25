@@ -1,9 +1,10 @@
 package com.github.glacimonto.sorbeto.domain.running.witness;
 
+import static com.github.glacimonto.sorbeto.domain.running.schedule.ExecutionId.NO_EXECUTION;
+
 import com.github.glacimonto.sorbeto.domain.reporting.IRecord;
-import com.github.glacimonto.sorbeto.domain.running.schedule.ExecutionId;
 import com.github.glacimonto.sorbeto.domain.running.witness.event.ExecutionEvent;
-import com.github.glacimonto.sorbeto.domain.running.witness.event.NullEvent;
+import com.github.glacimonto.sorbeto.domain.running.witness.event.NoEvent;
 import com.github.glacimonto.sorbeto.domain.running.witness.event.StepExecutionEvent;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,14 +18,14 @@ public interface ITell {
   default ExecutionEvent first() {
    return events().stream()
      .findFirst()
-     .orElse(new NullEvent(new ExecutionId(-1L)));
+     .orElse(new NoEvent(NO_EXECUTION));
   }
 
   default ExecutionEvent last() {
     return events().stream()
       .limit(MAX_NUMBER_OF_EVENTS)
       .reduce((first, second) -> second)
-      .orElse(new NullEvent(new ExecutionId(-1L)));
+      .orElse(new NoEvent(NO_EXECUTION));
   }
 
   default int count() {
@@ -40,4 +41,5 @@ public interface ITell {
   ExecutionReport report();
 
   void register(List<IRecord> reporter);
+
 }
