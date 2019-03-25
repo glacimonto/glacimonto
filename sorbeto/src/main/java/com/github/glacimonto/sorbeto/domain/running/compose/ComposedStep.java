@@ -12,11 +12,13 @@ public class ComposedStep implements PlannedStep {
   public final StepId stepId;
   public final String sentence;
   public final List<PlannedStep> steps;
+  public final String property;
 
-  private ComposedStep(StepId stepId, String sentence, List<PlannedStep> steps) {
+  private ComposedStep(StepId stepId, String sentence, List<PlannedStep> steps, String property) {
     this.stepId = stepId;
     this.sentence = sentence;
     this.steps = steps;
+    this.property = property;
   }
 
   @Override
@@ -30,6 +32,7 @@ public class ComposedStep implements PlannedStep {
       "stepId=" + stepId +
       ", sentence='" + sentence + '\'' +
       ", steps=" + steps +
+      ", property='" + property + '\'' +
       '}';
   }
 
@@ -40,12 +43,13 @@ public class ComposedStep implements PlannedStep {
     ComposedStep that = (ComposedStep) o;
     return stepId.equals(that.stepId) &&
       sentence.equals(that.sentence) &&
-      steps.equals(that.steps);
+      steps.equals(that.steps) &&
+      property.equals(that.property);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(stepId, sentence, steps);
+    return Objects.hash(stepId, sentence, steps, property);
   }
 
   public static ComposedStepBuilder builder() {
@@ -54,8 +58,9 @@ public class ComposedStep implements PlannedStep {
 
   public static class ComposedStepBuilder {
     private StepId stepId = new StepId(-1L); // TODO - NULL ME later
-    private String sentence = "";
+    private String sentence = ""; // TODO - NULL ME later
     private List<PlannedStep> steps = new ArrayList<>();
+    private String property = "";
 
     private ComposedStepBuilder() {}
 
@@ -63,7 +68,7 @@ public class ComposedStep implements PlannedStep {
       if (steps.isEmpty()) {
         steps = emptyList();
       }
-      return new ComposedStep(stepId, sentence, unmodifiableList(steps));
+      return new ComposedStep(stepId, sentence, unmodifiableList(steps), property);
     }
 
     public ComposedStepBuilder sentence(String sentence) {
@@ -78,6 +83,11 @@ public class ComposedStep implements PlannedStep {
 
     public ComposedStepBuilder withId(StepId stepId) {
       this.stepId = stepId;
+      return this;
+    }
+
+    public ComposedStepBuilder withProperty(String property) {
+      this.property = property;
       return this;
     }
   }

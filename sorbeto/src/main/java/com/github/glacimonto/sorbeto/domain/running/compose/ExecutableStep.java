@@ -4,12 +4,14 @@ import java.util.Objects;
 
 public class ExecutableStep implements PlannedStep {
 
-  private final StepId stepId;
-  private final String action; // TODO - Type me later
+  public final StepId stepId;
+  public final String action; // TODO - Type me later
+  public final String property;
 
-  private ExecutableStep(StepId stepId, String action) {
+  private ExecutableStep(StepId stepId, String action, String property) {
     this.stepId = stepId;
     this.action = action;
+    this.property = property;
   }
 
   @Override
@@ -22,6 +24,7 @@ public class ExecutableStep implements PlannedStep {
     return "ExecutableStep{" +
       "stepId=" + stepId +
       ", action='" + action + '\'' +
+      ", property='" + property + '\'' +
       '}';
   }
 
@@ -45,12 +48,13 @@ public class ExecutableStep implements PlannedStep {
 
   public static class ExecutableStepBuilder {
     private StepId stepId;
-    private String action;
+    private String action = "";
+    private String property = "";
 
     private ExecutableStepBuilder() {}
 
     public ExecutableStep build() {
-      return new ExecutableStep(stepId, action);
+      return new ExecutableStep(stepId, action, property);
     }
 
     public ExecutableStepBuilder withAction(String action) {
@@ -60,6 +64,11 @@ public class ExecutableStep implements PlannedStep {
 
     public ExecutableStepBuilder withId(StepId stepId) {
       this.stepId = stepId;
+      return this;
+    }
+
+    public ExecutableStepBuilder withProperty(String property) {
+      this.property = property;
       return this;
     }
   }
