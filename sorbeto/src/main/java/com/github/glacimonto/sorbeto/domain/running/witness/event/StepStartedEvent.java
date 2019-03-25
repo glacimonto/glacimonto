@@ -3,11 +3,11 @@ package com.github.glacimonto.sorbeto.domain.running.witness.event;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ExecutionId;
 import java.util.Objects;
 
-public class EndedEvent implements ExecutionEvent {
+public final class StepStartedEvent implements StepExecutionEvent {
 
   private final ExecutionId executionId;
 
-  public EndedEvent(ExecutionId executionId) {
+  public StepStartedEvent(ExecutionId executionId) {
     this.executionId = executionId;
   }
 
@@ -18,7 +18,7 @@ public class EndedEvent implements ExecutionEvent {
 
   @Override
   public String type() {
-    return "ENDED_EVENT";
+    return "STEP_STARTED_EVENT";
   }
 
   @Override

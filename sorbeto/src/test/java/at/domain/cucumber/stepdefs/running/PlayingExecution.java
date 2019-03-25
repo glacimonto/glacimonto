@@ -13,7 +13,7 @@ import com.github.glacimonto.sorbeto.domain.running.schedule.ScheduledExecution;
 import com.github.glacimonto.sorbeto.domain.running.witness.ExecutionReport;
 import com.github.glacimonto.sorbeto.domain.running.witness.IWitness;
 import com.github.glacimonto.sorbeto.domain.running.witness.event.ExecutionEvent;
-import com.github.glacimonto.sorbeto.domain.running.witness.event.PlayingEvent;
+import com.github.glacimonto.sorbeto.domain.running.witness.event.ExecutionStartedEvent;
 import com.github.glacimonto.sorbeto.domain.running.witness.event.StepSucceedEvent;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -45,9 +45,9 @@ public class PlayingExecution {
 
   @Then("it produces a playing execution event")
   public void it_produces_a_playing_execution_event() {
-    ExecutionEvent expectedPlayingEvent = new PlayingEvent(executionId);
+    ExecutionEvent expectedPlayingEvent = new ExecutionStartedEvent(executionId);
     assertThat(fakeWitness.first()).isEqualTo(expectedPlayingEvent);
-    assertThat(fakeWitness.first().type()).isEqualTo("PLAYING_EVENT");
+    assertThat(fakeWitness.first().type()).isEqualTo("EXECUTION_STARTED_EVENT");
   }
 
   @And("it produces X events")

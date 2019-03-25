@@ -13,8 +13,8 @@ import com.github.glacimonto.sorbeto.domain.running.witness.DefaultWitnessImpl;
 import com.github.glacimonto.sorbeto.domain.running.witness.ExecutionReport;
 import com.github.glacimonto.sorbeto.domain.running.witness.IWatch;
 import com.github.glacimonto.sorbeto.domain.running.witness.IWitness;
-import com.github.glacimonto.sorbeto.domain.running.witness.event.EndedEvent;
-import com.github.glacimonto.sorbeto.domain.running.witness.event.PlayingEvent;
+import com.github.glacimonto.sorbeto.domain.running.witness.event.ExecutionEndedEvent;
+import com.github.glacimonto.sorbeto.domain.running.witness.event.ExecutionStartedEvent;
 import com.github.glacimonto.sorbeto.domain.running.witness.event.StepSucceedEvent;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -44,7 +44,7 @@ public class WitnessExecution {
 
   @Then("the execution is over")
   public void the_execution_is_over() {
-    assertThat(witnessUnderTest.last()).isEqualTo(new EndedEvent(executionId));
+    assertThat(witnessUnderTest.last()).isEqualTo(new ExecutionEndedEvent(executionId));
   }
 
   @And("it tells a successful execution")
@@ -63,9 +63,9 @@ public class WitnessExecution {
 
     @Override
     public void play(ScheduledExecution executionExecution) {
-      witness.watch((new PlayingEvent(executionExecution.id())));
+      witness.watch((new ExecutionStartedEvent(executionExecution.id())));
       for (int i = 0; i < 4; i++) { witness.watch(new StepSucceedEvent(executionExecution.id())); }
-      witness.watch((new EndedEvent(executionExecution.id())));
+      witness.watch((new ExecutionEndedEvent(executionExecution.id())));
     }
 
   }
