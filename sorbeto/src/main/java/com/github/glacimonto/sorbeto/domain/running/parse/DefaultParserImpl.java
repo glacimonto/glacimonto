@@ -1,5 +1,7 @@
 package com.github.glacimonto.sorbeto.domain.running.parse;
 
+import com.github.glacimonto.sorbeto.domain.RawTestCase;
+
 public class DefaultParserImpl implements IParse {
 
   private Example hardCodedExample = Example.builder()
@@ -15,7 +17,7 @@ public class DefaultParserImpl implements IParse {
     .build();
 
   @Override
-  public Example parse(String testCase) {
+  public Example parse(RawTestCase testCase) {
     return hardCodedExample;
   }
 

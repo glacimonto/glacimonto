@@ -1,5 +1,6 @@
 package com.github.glacimonto.sorbeto.domain.running;
 
+import com.github.glacimonto.sorbeto.domain.RawTestCase;
 import com.github.glacimonto.sorbeto.domain.running.compose.ExecutionPlan;
 import com.github.glacimonto.sorbeto.domain.running.compose.ICompose;
 import com.github.glacimonto.sorbeto.domain.running.parse.Example;
@@ -19,7 +20,7 @@ public class DefaultRunnerImpl implements IRun {
   }
 
   @Override
-  public ExecutionRequestId run(String testCase) {
+  public ExecutionRequestId run(RawTestCase testCase) {
     final ExecutionRequestId executionRequestId = generateExecutionId(testCase);
     Example example = parser.parse(testCase);
     ExecutionPlan executionPlan = composer.compose(example);
@@ -27,7 +28,7 @@ public class DefaultRunnerImpl implements IRun {
     return executionRequestId;
   }
 
-  private ExecutionRequestId generateExecutionId(String testCase) {
+  private ExecutionRequestId generateExecutionId(RawTestCase testCase) {
     return new ExecutionRequestId(4242L);
   }
 

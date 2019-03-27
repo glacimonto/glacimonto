@@ -1,5 +1,6 @@
 package at.domain.testutils;
 
+import com.github.glacimonto.sorbeto.domain.RawTestCase;
 import com.github.glacimonto.sorbeto.domain.running.compose.ComposedStep;
 import com.github.glacimonto.sorbeto.domain.running.compose.ExecutableStep;
 import com.github.glacimonto.sorbeto.domain.running.compose.ExecutionPlan;
@@ -9,7 +10,7 @@ import com.github.glacimonto.sorbeto.domain.running.parse.Step;
 
 public class TestContext {
 
-  public static String TEST_CASE;
+  public static RawTestCase TEST_CASE;
 
   public static final Example SIMPLE_EXAMPLE = Example.builder()
     .forFeature("Fake Glacio test case")

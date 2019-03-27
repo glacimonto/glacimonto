@@ -3,6 +3,7 @@ package at.domain.cucumber.stepdefs;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import at.domain.testutils.TestContext;
+import com.github.glacimonto.sorbeto.domain.RawTestCase;
 import com.github.glacimonto.sorbeto.domain.Sorbeto;
 import com.github.glacimonto.sorbeto.domain.SorbetoImpl;
 import com.github.glacimonto.sorbeto.domain.reporting.DefaultReporterImpl;
@@ -39,7 +40,7 @@ public class ExecutingTestCase {
 
   @Given("the following glacio test case")
   public void the_following_glacio_test_case(String glacioTestCase) {
-    TestContext.TEST_CASE = glacioTestCase;
+    TestContext.TEST_CASE = new RawTestCase(glacioTestCase);
   }
 
   @When("it is executed")

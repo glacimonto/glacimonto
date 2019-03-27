@@ -16,8 +16,8 @@ public class SorbetoImpl implements Sorbeto {
   }
 
   @Override
-  public ExecutionRequestId run(String scenario) {
-    return engine.run(scenario);
+  public ExecutionRequestId run(RawTestCase testCase) {
+    return engine.run(testCase);
   }
 
   @Override
