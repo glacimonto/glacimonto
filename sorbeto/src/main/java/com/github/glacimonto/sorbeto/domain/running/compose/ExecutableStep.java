@@ -1,6 +1,13 @@
 package com.github.glacimonto.sorbeto.domain.running.compose;
 
+import com.github.glacimonto.sorbeto.domain.running.schedule.ExecutionId;
+import com.github.glacimonto.sorbeto.domain.running.witness.event.ExecutionEvent;
+import com.github.glacimonto.sorbeto.domain.running.witness.event.StepExecutionEvent;
+import com.github.glacimonto.sorbeto.domain.running.witness.event.StepStartedEvent;
+import com.github.glacimonto.sorbeto.domain.running.witness.event.StepSucceedEvent;
 import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class ExecutableStep implements PlannedStep {
 
@@ -17,6 +24,27 @@ public class ExecutableStep implements PlannedStep {
   @Override
   public StepId stepId() {
     return stepId;
+  }
+
+  @Override
+  public Stream<StepExecutionEvent> play() {
+    return Stream.<StepExecutionEvent>builder()
+      .add(new StepStartedEvent(new ExecutionId(0L)))
+      .add(run())
+      .build();
+  }
+
+  @Override
+  public Stream<StepExecutionEvent> play(Function<ExecutionEvent, ExecutionEvent> notify) {
+    return Stream.<StepExecutionEvent>builder()
+      .add(new StepStartedEvent(new ExecutionId(stepId.id)))
+      .add(run())
+      .build()
+      .peek(notify::apply);
+  }
+
+  private StepExecutionEvent run() {
+    return new StepSucceedEvent(new ExecutionId(stepId.id));
   }
 
   @Override

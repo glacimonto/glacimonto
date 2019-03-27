@@ -1,9 +1,13 @@
 package com.github.glacimonto.sorbeto.domain.running.compose;
 
 import com.github.glacimonto.sorbeto.domain.running.parse.Example;
+import com.github.glacimonto.sorbeto.domain.running.witness.event.ExecutionEvent;
+import com.github.glacimonto.sorbeto.domain.running.witness.event.StepExecutionEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class ExecutionPlan {
 
@@ -39,6 +43,18 @@ public class ExecutionPlan {
 
   public static ExecutionPlanBuilder builder() {
     return new ExecutionPlanBuilder();
+  }
+
+  public Stream<StepExecutionEvent> play() {
+    return plannedSteps.stream()
+      .map(PlannedStep::play)
+      .flatMap(eventStream -> eventStream);
+  }
+
+  public Stream play(Function<ExecutionEvent, ExecutionEvent> notify) {
+    return plannedSteps.stream()
+      .map( s -> s.play(notify) )
+      .flatMap(eventStream -> eventStream);
   }
 
   public static class ExecutionPlanBuilder {

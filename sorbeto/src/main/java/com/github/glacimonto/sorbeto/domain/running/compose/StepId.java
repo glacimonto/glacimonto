@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class StepId {
 
-  private final Long id;
+  public final Long id;
 
   public StepId(long id) {
     this.id = id;

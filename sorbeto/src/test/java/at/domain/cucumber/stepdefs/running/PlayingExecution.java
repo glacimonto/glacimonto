@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import at.domain.testutils.TestContext;
 import com.github.glacimonto.sorbeto.domain.reporting.IRecord;
 import com.github.glacimonto.sorbeto.domain.running.ExecutionRequestId;
-import com.github.glacimonto.sorbeto.domain.running.compose.ExecutionPlan;
 import com.github.glacimonto.sorbeto.domain.running.play.DefaultPlayerImpl;
 import com.github.glacimonto.sorbeto.domain.running.play.IPlay;
 import com.github.glacimonto.sorbeto.domain.running.schedule.ExecutionId;

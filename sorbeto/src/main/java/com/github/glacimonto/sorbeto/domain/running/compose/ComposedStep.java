@@ -3,9 +3,13 @@ package com.github.glacimonto.sorbeto.domain.running.compose;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.unmodifiableList;
 
+import com.github.glacimonto.sorbeto.domain.running.witness.event.ExecutionEvent;
+import com.github.glacimonto.sorbeto.domain.running.witness.event.StepExecutionEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class ComposedStep implements PlannedStep {
 
@@ -24,6 +28,20 @@ public class ComposedStep implements PlannedStep {
   @Override
   public StepId stepId() {
     return stepId;
+  }
+
+  @Override
+  public Stream<StepExecutionEvent> play() {
+    return steps.stream()
+      .map(PlannedStep::play)
+      .flatMap(eventStream -> eventStream);
+  }
+
+  @Override
+  public Stream<StepExecutionEvent> play(Function<ExecutionEvent, ExecutionEvent> notify) {
+    return steps.stream()
+      .map(s -> s.play(notify))
+      .flatMap(eventStream -> eventStream);
   }
 
   @Override

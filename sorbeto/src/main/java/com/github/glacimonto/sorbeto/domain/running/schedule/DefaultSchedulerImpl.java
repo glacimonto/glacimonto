@@ -13,7 +13,7 @@ import java.util.List;
 
 public class DefaultSchedulerImpl implements ISchedule {
 
-  private final List<ScheduledExecution> scheduledExecutions = new ArrayList<>();
+  private final List<ScheduledExecution> scheduledExecutions = new ArrayList<>(); // TODO - structure me later
   private final IRecord reporter;
 
   public DefaultSchedulerImpl(IRecord reporter) {
@@ -41,9 +41,9 @@ public class DefaultSchedulerImpl implements ISchedule {
   }
 
   private void trigger(ScheduledExecution pendingExecution) {
-    IWitness watcher = new DefaultWitnessImpl(pendingExecution.requestId(), executionId(), pendingExecution.plan());
-    watcher.register(Collections.singletonList(reporter));
-    IPlay player = new DefaultPlayerImpl(watcher);
+    IWitness witness = new DefaultWitnessImpl(pendingExecution.requestId(), executionId(), pendingExecution.plan());
+    witness.register(Collections.singletonList(reporter));
+    IPlay player = new DefaultPlayerImpl(witness);
     player.play(pendingExecution);
   }
 
