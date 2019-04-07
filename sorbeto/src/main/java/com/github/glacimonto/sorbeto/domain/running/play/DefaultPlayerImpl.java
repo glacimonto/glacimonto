@@ -6,7 +6,6 @@ import com.github.glacimonto.sorbeto.domain.running.witness.event.ExecutionEnded
 import com.github.glacimonto.sorbeto.domain.running.witness.event.ExecutionEvent;
 import com.github.glacimonto.sorbeto.domain.running.witness.event.ExecutionStartedEvent;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class DefaultPlayerImpl implements IPlay {
 
@@ -24,8 +23,7 @@ public class DefaultPlayerImpl implements IPlay {
 
     pendingExecution
       .plan()
-      .play(notify)
-    .collect(Collectors.toList());
+      .play(notify);
 
     watcher.watch(new ExecutionEndedEvent(pendingExecution.id()));
   }

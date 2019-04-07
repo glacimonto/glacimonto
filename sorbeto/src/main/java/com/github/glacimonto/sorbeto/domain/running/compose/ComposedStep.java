@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ComposedStep implements PlannedStep {
@@ -31,17 +32,10 @@ public class ComposedStep implements PlannedStep {
   }
 
   @Override
-  public Stream<StepExecutionEvent> play() {
-    return steps.stream()
-      .map(PlannedStep::play)
-      .flatMap(eventStream -> eventStream);
-  }
-
-  @Override
-  public Stream<StepExecutionEvent> play(Function<ExecutionEvent, ExecutionEvent> notify) {
-    return steps.stream()
-      .map(s -> s.play(notify))
-      .flatMap(eventStream -> eventStream);
+  public void play(Function<ExecutionEvent, ExecutionEvent> notify) {
+    steps.stream()
+      .peek(s -> s.play(notify))
+      .collect(Collectors.toList());
   }
 
   @Override

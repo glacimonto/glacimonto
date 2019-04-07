@@ -7,7 +7,6 @@ import com.github.glacimonto.sorbeto.domain.running.witness.event.StepStartedEve
 import com.github.glacimonto.sorbeto.domain.running.witness.event.StepSucceedEvent;
 import java.util.Objects;
 import java.util.function.Function;
-import java.util.stream.Stream;
 
 public class ExecutableStep implements PlannedStep {
 
@@ -27,23 +26,17 @@ public class ExecutableStep implements PlannedStep {
   }
 
   @Override
-  public Stream<StepExecutionEvent> play() {
-    return Stream.<StepExecutionEvent>builder()
-      .add(new StepStartedEvent(new ExecutionId(0L)))
-      .add(run())
-      .build();
-  }
-
-  @Override
-  public Stream<StepExecutionEvent> play(Function<ExecutionEvent, ExecutionEvent> notify) {
-    return Stream.<StepExecutionEvent>builder()
-      .add(new StepStartedEvent(new ExecutionId(stepId.id)))
-      .add(run())
-      .build()
-      .peek(notify::apply);
+  public void play(Function<ExecutionEvent, ExecutionEvent> notify) {
+      notify.apply(new StepStartedEvent(new ExecutionId(stepId.id)));
+      notify.apply(run());
   }
 
   private StepExecutionEvent run() {
+    try {
+      Thread.sleep(3000);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
     return new StepSucceedEvent(new ExecutionId(stepId.id));
   }
 

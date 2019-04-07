@@ -41,6 +41,7 @@ public class DefaultWitnessImpl implements IWitness {
   @Override
   public void watch(ExecutionEvent executionEvent) {
     events.add(executionEvent);
+    System.out.println(executionEvent.type());
     tell();
   }
 
